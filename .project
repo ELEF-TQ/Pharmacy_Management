@@ -3,6 +3,7 @@
 	<name>GestionPharmacie</name>
 	<comment></comment>
 	<projects>
+		<project>GestionLocation</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>
