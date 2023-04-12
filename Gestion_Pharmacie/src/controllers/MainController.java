@@ -8,7 +8,9 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainController {
@@ -23,6 +25,8 @@ public class MainController {
     private Button btn_sinscrire;
     
     private Parent Page ;
+    
+    /*ResourceBundle resources = ResourceBundle.getBundle("Language.lang_pt");;*/
 
     @FXML
     void On_SignIn() {
@@ -35,6 +39,7 @@ public class MainController {
 			    VBox.getChildren().removeAll();
 			    VBox.getChildren().setAll(Page);
     		} catch (IOException e1) {
+    			System.out.print("Signin");
 				e1.printStackTrace();
 			}
     	});
@@ -47,10 +52,11 @@ public class MainController {
     	T.play();
     	T.setOnFinished(e -> {
     		try {
-				Page = FXMLLoader.load(getClass().getResource("/interfaces/SignUp.fxml"));
+    			Page = FXMLLoader.load(getClass().getResource("/interfaces/SignUp.fxml"));
 			    VBox.getChildren().removeAll();
 			    VBox.getChildren().setAll(Page);
     		} catch (IOException e1) {
+    			System.out.print("Signin");
 				e1.printStackTrace();
 			}
     	});

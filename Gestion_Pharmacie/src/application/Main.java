@@ -16,7 +16,7 @@ public class Main extends Application {
 		try {
 			Parent root= FXMLLoader.load(getClass().getResource("/interfaces/Main.fxml"));
 			Scene scene = new Scene(root);
-			/*scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());*/
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			scene.setFill(Color.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
