@@ -20,7 +20,6 @@ public class Main extends Application {
 			scene.setFill(Color.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.initStyle(StageStyle.TRANSPARENT);
-			
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

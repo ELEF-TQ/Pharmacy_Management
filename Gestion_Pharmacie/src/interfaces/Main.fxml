@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="671.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainController">
    <children>
-      <AnchorPane layoutX="22.0" layoutY="42.0" prefHeight="302.0" prefWidth="627.0" style="-fx-background-color: blue;">
+      <AnchorPane layoutX="22.0" layoutY="42.0" prefHeight="302.0" prefWidth="627.0" styleClass="pane" stylesheets="@../application/application.css">
          <children>
             <Label contentDisplay="CENTER" layoutX="47.0" layoutY="63.0" prefHeight="88.0" prefWidth="227.0" style="-fx-alignment: center;" text="Vous n'étes pas inscrit ?" textFill="WHITE">
                <font>
@@ -29,7 +29,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btn_seconnecter" alignment="CENTER" contentDisplay="CENTER" layoutX="402.0" layoutY="158.0" mnemonicParsing="false" onAction="#On_SignIn" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-radius: 12; -fx-border-color: white;" text="Se connecter" textFill="WHITE">
+            <Button fx:id="btn_seconnecter" alignment="CENTER" contentDisplay="CENTER" layoutX="413.0" layoutY="137.0" mnemonicParsing="false" onAction="#On_SignIn" styleClass="trans-btn-white-border" stylesheets="@../application/application.css" text="Se connecter" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
