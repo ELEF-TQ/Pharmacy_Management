@@ -8,9 +8,9 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+
 import javafx.util.Duration;
 
 public class MainController {
@@ -68,6 +68,10 @@ public class MainController {
     	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
     	T.setToX(VBox.getLayoutX()*5.5);
     	T.play();
+    	
+
+    	
+    
     	
     }
 

@@ -14,7 +14,7 @@
 	-fx-text-fill: whitesmoke ;
 }
 .Login_background {
-	-fx-background-image: url("/images/bck.jpg");
+	-fx-background-image: url("/images/LoginHome.jpg");
 	-fx-background-size: 281 386;
 	-fx-background-position: center center;
 	-fx-background-color: #FFFFFF;
@@ -156,4 +156,14 @@
     -fx-text-fill: #666;
 }
 
+/*_________SignIn Style____________ */
+.jfx-snackbar-content {
+	-fx-background-color : #F00 ;
+	-fx-pref-width : 270 ;
+}
+.jfx-snackbar-toast {
+	-fx-text-fill :#FFF ;
+	-fx-font-size :18px ;
+	
+}
 

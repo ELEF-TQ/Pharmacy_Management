@@ -38,6 +38,6 @@
                </cursor>
             </Button>
          </children></AnchorPane>
-      <VBox fx:id="VBox" layoutX="41.0" layoutY="9.0" prefHeight="363.0" prefWidth="277.0" style="-fx-background-color: white;" />
+      <VBox fx:id="VBox" layoutX="41.0" layoutY="9.0" prefHeight="353.0" prefWidth="277.0" styleClass="Login_background" stylesheets="@../application/application.css" />
    </children>
 </AnchorPane>
