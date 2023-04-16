@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -42,60 +43,80 @@ public class HomeController implements Initializable {
     private Button btnSignout;
 
     @FXML
-    private Pane pnlCustomer;
+    private Pane HomeContent;
 
-    @FXML
-    private Pane pnlOrders;
-
-    @FXML
-    private Pane pnlOverview;
-
-    @FXML
-    private Pane pnlMenus;
+    
+    private Parent Page ;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Node[] nodes = new Node[10];
-        for (int i = 0; i < nodes.length; i++) {
-            try {
-
-                final int j = i;
-                nodes[i] = FXMLLoader.load(getClass().getResource("/interfaces/item.fxml"));
-
-                //give the items some effect
-
-                nodes[i].setOnMouseEntered(event -> {
-                    nodes[j].setStyle("-fx-background-color : #0A0E3F");
-                });
-                nodes[i].setOnMouseExited(event -> {
-                    nodes[j].setStyle("-fx-background-color : #02030A");
-                });
-                pnItems.getChildren().add(nodes[i]);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+      
 
     }
 
 
     public void handleClicks(ActionEvent actionEvent) {
+    	 if (actionEvent.getSource() == btnOverview) {
+         	try {
+ 				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter1.fxml"));
+ 				HomeContent.getChildren().removeAll();
+ 				HomeContent.getChildren().setAll(Page);
+     		} catch (IOException e1) {
+ 				e1.printStackTrace();
+ 			}
+         }
+    	 
+         if(actionEvent.getSource()==btnOrders)
+         {
+         	try {
+ 				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter2.fxml"));
+ 				HomeContent.getChildren().removeAll();
+ 				HomeContent.getChildren().setAll(Page);
+     		} catch (IOException e1) {
+ 				e1.printStackTrace();
+ 			}
+           
+         }
+         
         if (actionEvent.getSource() == btnCustomers) {
-            pnlCustomer.setStyle("-fx-background-color : #1620A1");
-            pnlCustomer.toFront();
+        	try {
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter3.fxml"));
+				HomeContent.getChildren().removeAll();
+				HomeContent.getChildren().setAll(Page);
+    		} catch (IOException e1) {
+				e1.printStackTrace();
+			}
         }
         if (actionEvent.getSource() == btnMenus) {
-            pnlMenus.setStyle("-fx-background-color : #53639F");
-            pnlMenus.toFront();
+        	try {
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter4.fxml"));
+				HomeContent.getChildren().removeAll();
+				HomeContent.getChildren().setAll(Page);
+    		} catch (IOException e1) {
+				e1.printStackTrace();
+			}
         }
-        if (actionEvent.getSource() == btnOverview) {
-            pnlOverview.setStyle("-fx-background-color : #02030A");
-            pnlOverview.toFront();
-        }
-        if(actionEvent.getSource()==btnOrders)
+       
+        if(actionEvent.getSource()==btnSettings)
         {
-            pnlOrders.setStyle("-fx-background-color : #464F67");
-            pnlOrders.toFront();
+        	try {
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter5.fxml"));
+				HomeContent.getChildren().removeAll();
+				HomeContent.getChildren().setAll(Page);
+    		} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+        }
+        if(actionEvent.getSource()==btnSignout)
+        {
+        	try {
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter6.fxml"));
+				HomeContent.getChildren().removeAll();
+				HomeContent.getChildren().setAll(Page);
+    		} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+          
         }
     }
 }
