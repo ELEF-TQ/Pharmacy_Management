@@ -96,18 +96,6 @@
  -fx-border-radius: 12px;
 }
 
-/*_________SignIn Style____________ */
-.jfx-snackbar-content {
-	-fx-background-color : #F00 ;
-	-fx-pref-width : 270 ;
-}
-.jfx-snackbar-toast {
-	-fx-text-fill :#FFF ;
-	-fx-font-size :18px ;
-	
-}
-
-
 
 
 /*__________________ Home Styling______________ */

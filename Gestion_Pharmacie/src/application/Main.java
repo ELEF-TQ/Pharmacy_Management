@@ -14,7 +14,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			Parent root= FXMLLoader.load(getClass().getResource("/interfaces/Main.fxml"));
+			Parent root= FXMLLoader.load(getClass().getResource("/interfaces/Sign.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			scene.setFill(Color.TRANSPARENT);

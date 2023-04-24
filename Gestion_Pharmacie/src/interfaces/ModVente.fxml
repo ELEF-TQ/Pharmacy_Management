@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="PageContent" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModVenteController">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="477.0" prefWidth="319.0">
+               <children>
+                  <TextField promptText="Nom" styleClass="input" stylesheets="@../application/application.css">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField promptText="Code" styleClass="input" stylesheets="@../application/application.css">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField promptText="Prix en DH" styleClass="input" stylesheets="@../application/application.css">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="319.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="342.0" prefHeight="477.0" prefWidth="319.0">
+               <children>
+                  <DatePicker promptText="Dtae Vente" styleClass="input" stylesheets="@../application/application.css">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" layoutX="2.0" layoutY="482.0" prefHeight="94.0" prefWidth="726.0">
+               <children>
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: green;" stylesheets="@../application/application.css" text="Ajouter" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="showVente" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_ShowVente" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="List des Ventes" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</StackPane>

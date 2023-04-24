@@ -21,28 +21,25 @@ public class SignInController {
 	private Button forgotButton;
 	
 	@FXML private void onSignIn() {
+		 String username = usernameField.getText();
+         String password = passwordField.getText();
+         if (username.equals("admin") && password.equals("admin")) {
+         	try {
+         		 Parent root= FXMLLoader.load(getClass().getResource("/interfaces/Home.fxml"));
+                  Scene scene = new Scene(root);
+                  Stage stage = new Stage();
+                  stage.setScene(scene);
+                  stage.show();
+         	}catch(Exception e) {
+     			e.printStackTrace();
+         	}
+         	  
+         } else {
+         	System.out.print("not working");
+         }
 	}
 
-    public void initialize() {
-        validateButton.setOnAction(event -> {
-            String username = usernameField.getText();
-            String password = passwordField.getText();
-            if (username.equals("admin") && password.equals("admin")) {
-            	try {
-            		 Parent root= FXMLLoader.load(getClass().getResource("/interfaces/Home.fxml"));
-                     Scene scene = new Scene(root);
-                     Stage stage = new Stage();
-                     stage.setScene(scene);
-                     stage.show();
-            	}catch(Exception e) {
-        			e.printStackTrace();
-            	}
-            	  
-            } else {
-            	System.out.print("not working");
-            }
-        });
-    }
+    
 }
 
 // in case of test login :

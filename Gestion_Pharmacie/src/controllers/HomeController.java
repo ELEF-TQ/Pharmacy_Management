@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+public class HomeController  {
 
     @FXML
     private VBox pnItems = null;
@@ -32,16 +32,14 @@ public class HomeController implements Initializable {
     private Button btnOverview;
 
     @FXML
-    private Button btnOrders;
+    private Button btnProduit;
 
     @FXML
-    private Button btnCustomers;
+    private Button btnFournisseur;
+
 
     @FXML
-    private Button btnMenus;
-
-    @FXML
-    private Button btnPackages;
+    private Button btnVente;
 
     @FXML
     private Button btnSettings;
@@ -59,17 +57,12 @@ public class HomeController implements Initializable {
     private Parent Page ;
     private Stage stage ;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-      
-
-    }
 
 
     public void handleClicks(ActionEvent actionEvent) {
     	 if (actionEvent.getSource() == btnOverview) {
          	try {
- 				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter1.fxml"));
+ 				Page = FXMLLoader.load(getClass().getResource("/interfaces/Acceuill.fxml"));
  				HomeContent.getChildren().removeAll();
  				HomeContent.getChildren().setAll(Page);
      		} catch (IOException e1) {
@@ -77,10 +70,10 @@ public class HomeController implements Initializable {
  			}
          }
     	 
-         if(actionEvent.getSource()==btnOrders)
+         if(actionEvent.getSource()==btnProduit)
          {
          	try {
- 				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter2.fxml"));
+ 				Page = FXMLLoader.load(getClass().getResource("/interfaces/ModProduit.fxml"));
  				HomeContent.getChildren().removeAll();
  				HomeContent.getChildren().setAll(Page);
      		} catch (IOException e1) {
@@ -89,18 +82,18 @@ public class HomeController implements Initializable {
            
          }
          
-        if (actionEvent.getSource() == btnCustomers) {
+        if (actionEvent.getSource() == btnFournisseur) {
         	try {
-				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter3.fxml"));
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/ModFournisseur.fxml"));
 				HomeContent.getChildren().removeAll();
 				HomeContent.getChildren().setAll(Page);
     		} catch (IOException e1) {
 				e1.printStackTrace();
 			}
         }
-        if (actionEvent.getSource() == btnMenus) {
+        if (actionEvent.getSource() == btnVente) {
         	try {
-				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter4.fxml"));
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/ModVente.fxml"));
 				HomeContent.getChildren().removeAll();
 				HomeContent.getChildren().setAll(Page);
     		} catch (IOException e1) {
@@ -111,7 +104,7 @@ public class HomeController implements Initializable {
         if(actionEvent.getSource()==btnSettings)
         {
         	try {
-				Page = FXMLLoader.load(getClass().getResource("/interfaces/inter5.fxml"));
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/ModSettings.fxml"));
 				HomeContent.getChildren().removeAll();
 				HomeContent.getChildren().setAll(Page);
     		} catch (IOException e1) {

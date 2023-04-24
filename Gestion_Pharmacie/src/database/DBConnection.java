@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DBConnection {
     private static final String USERNAME = "root";
@@ -20,6 +22,7 @@ public class DBConnection {
             con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
         } catch (SQLException ex) {
             System.out.println("connection failed !");
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE ,null , ex); 
         }
     }
     

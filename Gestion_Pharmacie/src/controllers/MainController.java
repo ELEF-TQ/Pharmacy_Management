@@ -26,7 +26,7 @@ public class MainController {
     
     private Parent Page ;
     
-    /*ResourceBundle resources = ResourceBundle.getBundle("Language.lang_pt");;*/
+   
   
 
     @FXML
@@ -68,11 +68,6 @@ public class MainController {
     	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
     	T.setToX(VBox.getLayoutX()*5.5);
     	T.play();
-    	
-
-    	
-    
-    	
     }
 
 }
