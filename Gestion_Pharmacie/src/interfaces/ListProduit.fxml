@@ -10,17 +10,20 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="524.0" prefWidth="732.0">
          <children>
-            <TableView prefHeight="480.0" prefWidth="732.0" stylesheets="@../application/application.css">
+            <TableView fx:id="Table_Prd" prefHeight="480.0" prefWidth="732.0" stylesheets="@../application/application.css">
               <columns>
-                <TableColumn prefWidth="142.0" text="Nom" />
-                <TableColumn minWidth="0.0" prefWidth="139.0" text="Type" />
-                  <TableColumn prefWidth="141.0" text="Category" />
-                  <TableColumn prefWidth="156.0" text="Fournisseur" />
-                  <TableColumn prefWidth="153.0" text="Prix" />
+                <TableColumn fx:id="Code_Prd" prefWidth="55.0" text="Code" />
+                <TableColumn fx:id="Nom_Prd" minWidth="0.0" prefWidth="119.0" text="Nom" />
+                  <TableColumn fx:id="Category_Prd" prefWidth="112.0" text="Category" />
+                  <TableColumn fx:id="Forme_Prd" prefWidth="119.0" text="Forme" />
+                  <TableColumn fx:id="Prix_Prd" prefWidth="98.0" text="Prix" />
+                  <TableColumn fx:id="Fournisseur_Prd" prefWidth="114.0" text="Fournisseur" />
+                  <TableColumn fx:id="DateFab_Prd" prefWidth="144.0" text="DateFab" />
+                  <TableColumn fx:id="DateExp_Prd" prefWidth="138.0" text="DateExp" />
               </columns>
             </TableView>
             <HBox alignment="CENTER" prefHeight="94.0" prefWidth="726.0">

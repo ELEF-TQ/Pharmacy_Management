@@ -15,22 +15,28 @@ public class DBConnection {
     private static final int PORT = 3306;
     private static final String DB_NAME = "pharmacymanagement";
     
-    public static Connection con;
+    public static Connection con = null ;
+    public static Connection connect() {
+            try {
+				con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
+				System.out.print("connection worked");
+				return con;
+			} catch (Exception e) {
+				System.out.print("connection Failed");
+				e.printStackTrace();
+				return null ;
+			}
+			
+            
+       
+    };
     
-    static {
-        try {
-            con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
-        } catch (SQLException ex) {
-            System.out.println("connection failed !");
-            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE ,null , ex); 
-        }
-    }
     
     
-    
+   
     // checkLogIn :
     public static int checkLogin(String username, String password) {
-        Connection con = DBConnection.con;
+        Connection con = DBConnection.connect();
         if(con == null)
             return -1;
         String sql = "SELECT * FROM users WHERE username=? AND password=?";

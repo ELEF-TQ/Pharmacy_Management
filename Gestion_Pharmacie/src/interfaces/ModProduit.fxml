@@ -19,24 +19,24 @@
          <children>
             <VBox alignment="CENTER" prefHeight="477.0" prefWidth="319.0">
                <children>
-                  <TextField promptText="Nom" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Nom_Prd" promptText="Nom" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Code" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Code_Prd" promptText="Code" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField promptText="Prix en DH" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Prix_Prd" promptText="Prix en DH" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="319.0">
                      <children>
-                        <ComboBox prefWidth="150.0" promptText="Fournisseur" styleClass="input" stylesheets="@../application/application.css" />
+                        <ComboBox fx:id="Fournisseur_Prd" prefWidth="150.0" promptText="Fournisseur" styleClass="input" stylesheets="@../application/application.css" />
                         <FontAwesomeIcon glyphName="PLUS" size="30px">
                            <HBox.margin>
                               <Insets left="20.0" />
@@ -58,12 +58,12 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <DatePicker promptText="Dtae Fabrication" styleClass="input" stylesheets="@../application/application.css">
+                  <DatePicker fx:id="DateFab_Prd" promptText="Dtae Fabrication" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <DatePicker promptText="Date Expédition" styleClass="input" stylesheets="@../application/application.css">
+                  <DatePicker fx:id="DateExp_Prd" promptText="Date Expédition" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
@@ -72,7 +72,7 @@
             </VBox>
             <HBox alignment="CENTER" layoutX="2.0" layoutY="482.0" prefHeight="94.0" prefWidth="726.0">
                <children>
-                  <Button fx:id="AddProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: green;" stylesheets="@../application/application.css" text="Ajouter" textAlignment="CENTER">
+                  <Button fx:id="AddProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AddProduct" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: green;" stylesheets="@../application/application.css" text="Ajouter" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -94,7 +94,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="AnullerProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
+                  <Button fx:id="AnullerProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AnullerProduct" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
