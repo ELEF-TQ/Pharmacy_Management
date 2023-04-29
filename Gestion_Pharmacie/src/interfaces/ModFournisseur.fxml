@@ -44,7 +44,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
                   </Button>
+                  <Button mnemonicParsing="false" onAction="#On_ModifySupplier" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="Modifier" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutY="14.0" prefHeight="74.0" prefWidth="732.0">
