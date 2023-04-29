@@ -2,7 +2,6 @@ package controllers;
 
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -27,11 +26,17 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
+
 public class ModProduitController implements Initializable {
 	
 	public Connection con ;
 	public Statement statement;
 	public ResultSet resault;
+	
+	// Function to escape special characters in strings
+	public String escapeString(String input) {
+	    return input.replace("'", "''");
+	}
 	
 	@FXML
 	private Button AddProduct;
@@ -58,9 +63,17 @@ public class ModProduitController implements Initializable {
 
 
    
-
+    //____________ Cancel Adding product :
     @FXML
     void On_AnullerProduct() {
+    	// Clear the input fields
+	    Code_Prd.setText("");
+	    Nom_Prd.setText("");
+	    CategoryBox.setValue(null);
+	    FormeBox.setValue(null);
+	    Prix_Prd.setText("");
+	    DateFab_Prd.setValue(null);
+	    DateExp_Prd.setValue(null);
 
     }
 
@@ -81,22 +94,27 @@ public class ModProduitController implements Initializable {
 	
 	//____________ Add Product to data base : 
 	@FXML private void On_AddProduct() {
-		String Code = Code_Prd.getText();
-		String Name = Nom_Prd.getText();
-		String Category = CategoryBox.getValue();
-		String Forme = FormeBox.getValue();
+		String Code = escapeString(Code_Prd.getText());
+		String Name = escapeString(Nom_Prd.getText());
+		String Category = escapeString(CategoryBox.getValue());
+		String Forme = escapeString(FormeBox.getValue());
 		int Price = Integer.parseInt(Prix_Prd.getText());
 		LocalDate DateFab = DateFab_Prd.getValue();
 		LocalDate DateExp = DateExp_Prd.getValue();
-		
-		String SQL = "INSERT INTO `products`(`Code`, `Name`, `Category`, `Forme`, `Price`, `DateFab`, `DateExp`) "
-				+ "VALUES ([Code],[Name],[Category],[Forme],[Price],[DateFab],[DateExp])" ;
-		
+
+		String SQL = "INSERT INTO `products` (`Code`, `Name`, `Category`, `Forme`, `Price`, `DateFab`, `DateExp`) "
+		        + "VALUES ('" + Code + "', '" + Name + "', '" + Category + "', '" + Forme + "', " + Price + ", '"
+		        + DateFab.toString() + "', '" + DateExp.toString() + "')";
+        
 		try {
 			statement = (Statement) con.prepareStatement(SQL);
 			statement.execute(SQL);
 			Alert alert = new Alert(AlertType.CONFIRMATION , "Produit ajouter avec succes") ;
 			alert.showAndWait();
+			
+			 // Clear the input fields
+			On_AnullerProduct();
+		    
 		} catch (SQLException e) {
 			e.printStackTrace();
 			Alert alert = new Alert(AlertType.WARNING , "Produit Non ajouter") ;

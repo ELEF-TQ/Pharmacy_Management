@@ -18,7 +18,7 @@
          <children>
             <HBox alignment="CENTER" layoutX="3.0" layoutY="482.0" prefHeight="94.0" prefWidth="726.0">
                <children>
-                  <Button fx:id="AddFournissueur" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: green;" stylesheets="@../application/application.css" text="Ajouter" textAlignment="CENTER">
+                  <Button fx:id="AddFournissueur" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AddFournissueur" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: green;" stylesheets="@../application/application.css" text="Ajouter" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -29,10 +29,18 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="AnullerFournisseur" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
+                  <Button fx:id="AnullerFournisseur" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AnullerFournisseur" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#On_DeleteSupplier" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Supprimer">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -41,17 +49,17 @@
             </HBox>
             <HBox alignment="CENTER" layoutY="14.0" prefHeight="74.0" prefWidth="732.0">
                <children>
-                  <TextField prefHeight="40.0" prefWidth="180.0" promptText="Nom" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Nom_Frn" prefHeight="40.0" prefWidth="180.0" promptText="Nom" styleClass="input" stylesheets="@../application/application.css">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField prefHeight="40.0" prefWidth="180.0" promptText="Num Tel" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Tel_Frn" prefHeight="40.0" prefWidth="180.0" promptText="Num Tel" styleClass="input" stylesheets="@../application/application.css">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField maxWidth="203.0" prefHeight="40.0" prefWidth="180.0" promptText="Email" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Email_Frn" maxWidth="203.0" prefHeight="40.0" prefWidth="180.0" promptText="Email" styleClass="input" stylesheets="@../application/application.css">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
@@ -60,12 +68,12 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="54.0" layoutY="88.0" prefHeight="74.0" prefWidth="589.0">
                <children>
-                  <ComboBox fx:id="PaymentBox" prefHeight="43.0" prefWidth="180.0" promptText="Payement" styleClass="input" stylesheets="@../application/application.css">
+                  <ComboBox fx:id="PaymentBox_Frn" prefHeight="43.0" prefWidth="180.0" promptText="Payement" styleClass="input" stylesheets="@../application/application.css">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <TextField prefHeight="44.0" prefWidth="180.0" promptText="RIB Compte Bancaire" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Rib_Frn" prefHeight="44.0" prefWidth="180.0" promptText="RIB Compte Bancaire" styleClass="input" stylesheets="@../application/application.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -75,12 +83,12 @@
                   </TextField>
                </children>
             </HBox>
-            <TableView layoutY="171.0" prefHeight="305.0" prefWidth="732.0" stylesheets="@../application/application.css">
+            <TableView fx:id="Table_FRN" layoutY="171.0" prefHeight="305.0" prefWidth="732.0" stylesheets="@../application/application.css">
                <columns>
-                  <TableColumn prefWidth="173.0" text="Nom" />
-                  <TableColumn minWidth="0.0" prefWidth="161.0" text="Tel" />
-                  <TableColumn prefWidth="205.0" text="Email" />
-                  <TableColumn prefWidth="190.0" text=" Payment" />
+                  <TableColumn fx:id="Nom_FRN" prefWidth="173.0" text="Nom" />
+                  <TableColumn fx:id="Tel_FRN" minWidth="0.0" prefWidth="161.0" text="Tel" />
+                  <TableColumn fx:id="Email_FRN" prefWidth="205.0" text="Email" />
+                  <TableColumn fx:id="Payment_FRN" prefWidth="190.0" text=" Payment" />
                </columns>
             </TableView>
          </children>

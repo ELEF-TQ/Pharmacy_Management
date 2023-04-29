@@ -5,8 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class DBConnection {
     private static final String USERNAME = "root";
@@ -19,16 +18,12 @@ public class DBConnection {
     public static Connection connect() {
             try {
 				con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
-				System.out.print("connection worked");
 				return con;
 			} catch (Exception e) {
 				System.out.print("connection Failed");
 				e.printStackTrace();
 				return null ;
 			}
-			
-            
-       
     };
     
     
@@ -36,25 +31,29 @@ public class DBConnection {
    
     // checkLogIn :
     public static int checkLogin(String username, String password) {
-        Connection con = DBConnection.connect();
-        if(con == null)
-            return -1;
-        String sql = "SELECT * FROM users WHERE username=? AND password=?";
-        try {
-            PreparedStatement prest = con.prepareStatement(sql);
-            prest.setString(1, username);
-            prest.setString(2, password);
-            
-            ResultSet rs = prest.executeQuery();
-            
-            while(rs.next()) {
-                return 0;
+        try (Connection con = connect()) {
+            if (con == null)
+                return -1;
+
+            String sql = "SELECT * FROM users WHERE username=? AND password=?";
+            try (PreparedStatement prest = con.prepareStatement(sql)) {
+                prest.setString(1, username);
+                prest.setString(2, password);
+
+                try (ResultSet rs = prest.executeQuery()) {
+                    while (rs.next()) {
+                        return 0;
+                    }
+                }
+            } catch (SQLException se) {
+                System.out.println("SQL Error !");
             }
-        } catch(SQLException se) {
-            System.out.println("SQL Error !");
-        }
-        
+        } catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("SQL Error");
+		}
         return 1;
     }
+
     
 }

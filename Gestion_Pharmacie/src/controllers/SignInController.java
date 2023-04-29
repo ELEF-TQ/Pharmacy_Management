@@ -48,6 +48,7 @@ public class SignInController {
 	                  Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
 	              }
 	              stage.setScene(new Scene(root));
+	              stage.centerOnScreen();
 	          }
 	          break;
 	          case -1:
@@ -73,7 +74,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 */
 
-/* @FXML
+/*@FXML
   private void onSignIn() {
       if (!usernameField.getText().matches("[a-zA-Z0-9_]{4,}")) {
           return;

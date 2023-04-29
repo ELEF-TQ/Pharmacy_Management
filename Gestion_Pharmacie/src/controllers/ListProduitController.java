@@ -3,13 +3,10 @@ package controllers;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import com.mysql.jdbc.Statement;
-
 import database.DBConnection;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +23,8 @@ public class ListProduitController implements Initializable {
 	public Connection con ;
 	public Statement statement;
 	public ResultSet resault;
+	
+	
 
     @FXML
     private Button DeleteProduct;
@@ -58,15 +57,33 @@ public class ListProduitController implements Initializable {
     
     
     public ObservableList<Produit> data = FXCollections.observableArrayList() ;
-    
     private void showProducts() {
     	 try {
 	        	statement = (Statement) con.createStatement();
+	        	
+	        	if(statement != null) {
+	        		System.out.println("statetment worked");
+	        	}else {
+	        		System.out.println("statement error");
+	        	}
+	        	
 	            resault = statement.executeQuery("SELECT * FROM `products` WHERE 1");
-	           while(resault.next()) {
-	        	   data.add(new Produit(resault.getNString("Code"),resault.getNString("Name"),resault.getNString("Category"),
-	        			   resault.getNString("Forme"),resault.getInt("Price"),
+	           
+	            if(resault != null) {
+	        		System.out.println("resault worked");
+	        	}else {
+	        		System.out.println("resalut error");
+	        	}
+	            
+	            while(resault.next()) {
+	        	   data.add(new Produit(resault.getString("Code"),resault.getString("Name"),resault.getString("Category"),
+	        			   resault.getString("Forme"),resault.getInt("Price"),
 	        			   resault.getDate("DateFab"),resault.getDate("DateExp")));
+	        	   if(data != null) {
+		        		System.out.println("data worked");
+		        	}else {
+		        		System.out.println("data error");
+		        	}
 	           }
 	        }catch(SQLException e) {
 	        	e.printStackTrace();
@@ -76,15 +93,19 @@ public class ListProduitController implements Initializable {
 	        Category_Prd.setCellValueFactory(new PropertyValueFactory<Produit,String>("Category"));
 	        Forme_Prd.setCellValueFactory(new PropertyValueFactory<Produit,String>("Forme"));
 	        Prix_Prd.setCellValueFactory(new PropertyValueFactory<Produit,Integer>("Price"));
-	      /*DateFab_Prd.setCellValueFactory(new PropertyValueFactory<Produit,Integer>("DateFab"));
-	        DateExp_Prd.setCellValueFactory(new PropertyValueFactory<Produit,Integer>("DateExp"));*/
+	        DateFab_Prd.setCellValueFactory(new PropertyValueFactory<Produit,Date>("DateFab"));
+	        DateExp_Prd.setCellValueFactory(new PropertyValueFactory<Produit,Date>("DateExp"));
 	        Table_Prd.setItems(data);	
     }
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		   con = DBConnection.connect();
+		
+       	
 		   showProducts();
+		   
+		   
     }
    
     
