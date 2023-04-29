@@ -28,9 +28,9 @@
             </TableView>
             <HBox alignment="CENTER" prefHeight="94.0" prefWidth="726.0">
                <children>
-                  <Button fx:id="ModifProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: green;" stylesheets="@../application/application.css" text="Modifier" textAlignment="CENTER">
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_ModifyProduct" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="Modifier" textAlignment="CENTER">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                      <HBox.margin>
                         <Insets right="40.0" />
@@ -39,9 +39,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="DeleteProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="119.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Supprimer" textAlignment="CENTER">
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_DeleteProduct" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Supprimer" textAlignment="CENTER">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />

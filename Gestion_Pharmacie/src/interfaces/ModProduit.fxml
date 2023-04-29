@@ -72,9 +72,9 @@
             </VBox>
             <HBox alignment="CENTER" layoutX="2.0" layoutY="482.0" prefHeight="94.0" prefWidth="726.0">
                <children>
-                  <Button fx:id="AddProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AddProduct" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: green;" stylesheets="@../application/application.css" text="Ajouter" textAlignment="CENTER">
+                  <Button fx:id="AddProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AddProduct" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: green;" stylesheets="@../application/application.css" text="Ajouter" textAlignment="CENTER">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                      <HBox.margin>
                         <Insets right="40.0" />
@@ -85,7 +85,7 @@
                   </Button>
                   <Button fx:id="showProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_ShowProduct" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="List des Produits" textAlignment="CENTER">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold Italic" size="18.0" />
                      </font>
                      <HBox.margin>
                         <Insets right="40.0" />
@@ -94,9 +94,9 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="AnullerProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AnullerProduct" prefHeight="40.0" prefWidth="95.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
+                  <Button fx:id="AnullerProduct" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AnullerProduct" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: gray;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold Italic" size="14.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
