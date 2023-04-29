@@ -85,7 +85,7 @@ public class ModFournisseurController implements Initializable{
 	    	PaymentBox_Frn.setValue("Payment Par Bank");
 	    }
 	    
-	   //____________ Add Supplier To Database : 
+	   //____________ INSERT Supplier To Database : 
 		@FXML private void On_AddFournissueur() {
 			   
 			    /*___ input values ___*/
@@ -127,45 +127,26 @@ public class ModFournisseurController implements Initializable{
 			        /*___ fill table ___*/
 			        showSuppliers();
 
+			        /*___ error SQL ___*/
 			    } catch (SQLException e) {
 			        e.printStackTrace();
 			        Alert alert = new Alert(AlertType.WARNING, "Fournisseur non ajouté");
 			        alert.showAndWait();
 			    }
-			
 		}
 		
 		
-		//____________ Show Suppliers in the table : 
+		//____________ SELECT Suppliers To Table : 
 		public ObservableList<Fournisseur> data = FXCollections.observableArrayList() ;
 	    private void showSuppliers() {
 	    	Table_FRN.getItems().clear();
 	    	 try {
 		        	statement = (Statement) con.createStatement();
-		        	
-		        	if(statement != null) {
-		        		System.out.println("statetment worked");
-		        	}else {
-		        		System.out.println("statement error");
-		        	}
-		        	
 		            resault = statement.executeQuery("SELECT * FROM `suppliers` WHERE 1");
-		           
-		            if(resault != null) {
-		        		System.out.println("resault worked");
-		        	}else {
-		        		System.out.println("resalut error");
-		        	}
-		            
+ 
 		            while(resault.next()) {
 		        	   data.add(new Fournisseur(resault.getInt("Id")   ,resault.getString("Name"),resault.getString("Phone"),resault.getString("Email"),
 		        			   resault.getString("Payment"),resault.getString("RIB")));
-		        			  
-		        	   if(data != null) {
-			        		System.out.println("data worked");
-			        	}else {
-			        		System.out.println("data error");
-			        	}
 		           }
 		        }catch(SQLException e) {
 		        	e.printStackTrace();
@@ -179,7 +160,7 @@ public class ModFournisseurController implements Initializable{
 	    }
         
 	    
-	    //____________ Delete Supplier from database and table  : 
+	    //____________ DELETE Supplier from database and table  : 
 	    public void On_DeleteSupplier() {
 	    	/*___ select supplier ___*/
 	        Fournisseur selectedSupplier = Table_FRN.getSelectionModel().getSelectedItem();
@@ -241,7 +222,7 @@ public class ModFournisseurController implements Initializable{
 	        }
 	    }
 
-	    //____________ UPDATE Supplier Window  : 
+	    //____________ update Supplier Window  : 
 	    private Fournisseur showEditSupplierDialog(Fournisseur supplier) {
 	    	
 	    	/*___ create stage ___*/

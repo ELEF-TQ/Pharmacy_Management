@@ -51,7 +51,12 @@ public class ListProduitController implements Initializable {
     @FXML
     private TableColumn<Produit,Date> DateExp_Prd ;
 
-   
+    @FXML private void On_ModifyProduct() {
+    	
+    }
+@FXML private void On_DeleteProduct() {
+    	
+    }
 
    
     
@@ -60,30 +65,12 @@ public class ListProduitController implements Initializable {
     private void showProducts() {
     	 try {
 	        	statement = (Statement) con.createStatement();
-	        	
-	        	if(statement != null) {
-	        		System.out.println("statetment worked");
-	        	}else {
-	        		System.out.println("statement error");
-	        	}
-	        	
 	            resault = statement.executeQuery("SELECT * FROM `products` WHERE 1");
-	           
-	            if(resault != null) {
-	        		System.out.println("resault worked");
-	        	}else {
-	        		System.out.println("resalut error");
-	        	}
-	            
+
 	            while(resault.next()) {
 	        	   data.add(new Produit(resault.getString("Code"),resault.getString("Name"),resault.getString("Category"),
 	        			   resault.getString("Forme"),resault.getInt("Price"),
 	        			   resault.getDate("DateFab"),resault.getDate("DateExp")));
-	        	   if(data != null) {
-		        		System.out.println("data worked");
-		        	}else {
-		        		System.out.println("data error");
-		        	}
 	           }
 	        }catch(SQLException e) {
 	        	e.printStackTrace();
