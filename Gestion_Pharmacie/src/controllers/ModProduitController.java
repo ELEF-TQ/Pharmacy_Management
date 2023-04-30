@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 
 public class ModProduitController implements Initializable {
 	
-	 //___________ Database Connection :
+	//___________ Database Connection :
 	public Connection con ;
 	public Statement statement;
 	public ResultSet resault;
