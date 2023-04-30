@@ -231,8 +231,8 @@ public class ListProduitController implements Initializable {
         // Create a confirmation dialog
         Alert confirmationDialog = new Alert(AlertType.CONFIRMATION);
         confirmationDialog.setTitle("Confirmation");
-        confirmationDialog.setHeaderText("Clear All Products");
-        confirmationDialog.setContentText("Are you sure you want to delete all products?");
+        confirmationDialog.setHeaderText("Supprimer tous les produits");
+        confirmationDialog.setContentText("Voulez-vous vraiment supprimer tous les produits ?");
 
         Optional<ButtonType> result = confirmationDialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -243,21 +243,24 @@ public class ListProduitController implements Initializable {
             try {
                 statement = (Statement) con.prepareStatement(deleteSQL);
                 statement.execute(deleteSQL);
-                Alert alert = new Alert(AlertType.INFORMATION, "All products have been deleted successfully");
+                Alert alert = new Alert(AlertType.INFORMATION, "Tous les produits ont été supprimés avec succès");
                 alert.showAndWait();
             } catch (SQLException e) {
                 e.printStackTrace();
-                Alert alert = new Alert(AlertType.WARNING, "Failed to delete products");
+                Alert alert = new Alert(AlertType.WARNING, "Échec de suppression des produits");
                 alert.showAndWait();
             }
         }
       }
     
+   
+    //____________ SELECT Suppliers To Table : 
     public ObservableList<Produit> data = FXCollections.observableArrayList();
-
     private void showProducts() {
+    	/*___ clear table to avoid repetition ___*/
     	Table_Prd.getItems().clear();
         try {
+        	/*___ select products ___*/
             statement = (Statement) con.createStatement();
             resault = statement.executeQuery("SELECT * FROM `products` WHERE 1");
 
@@ -269,6 +272,7 @@ public class ListProduitController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        /*___ fill table ___*/
         Code_Prd.setCellValueFactory(new PropertyValueFactory<Produit, String>("Code"));
         Nom_Prd.setCellValueFactory(new PropertyValueFactory<Produit, String>("Name"));
         Category_Prd.setCellValueFactory(new PropertyValueFactory<Produit, String>("Category"));

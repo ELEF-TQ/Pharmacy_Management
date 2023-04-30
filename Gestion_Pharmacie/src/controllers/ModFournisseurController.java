@@ -307,8 +307,8 @@ public class ModFournisseurController implements Initializable{
 	    	 // Create a confirmation dialog
 	        Alert confirmationDialog = new Alert(AlertType.CONFIRMATION);
 	        confirmationDialog.setTitle("Confirmation");
-	        confirmationDialog.setHeaderText("Clear All Suppliers");
-	        confirmationDialog.setContentText("Are you sure you want to delete all suppliers?");
+	        confirmationDialog.setHeaderText("Effacer tous les fournisseurs");
+	        confirmationDialog.setContentText("Voulez-vous vraiment supprimer tous les fournisseurs?");
 
 	        Optional<ButtonType> result = confirmationDialog.showAndWait();
 	        if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -319,11 +319,11 @@ public class ModFournisseurController implements Initializable{
 	            try {
 	                statement = (Statement) con.prepareStatement(deleteSQL);
 	                statement.execute(deleteSQL);
-	                Alert alert = new Alert(AlertType.INFORMATION, "All suppliers have been deleted successfully");
+	                Alert alert = new Alert(AlertType.INFORMATION, "Tous les fournisseurs ont été supprimés avec succès");
 	                alert.showAndWait();
 	            } catch (SQLException e) {
 	                e.printStackTrace();
-	                Alert alert = new Alert(AlertType.WARNING, "Failed to delete suppliers");
+	                Alert alert = new Alert(AlertType.WARNING, "Échec de suppression des fournisseurs");
 	                alert.showAndWait();
 	            }
 	        }

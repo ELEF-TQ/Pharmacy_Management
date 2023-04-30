@@ -139,12 +139,32 @@ public class ModProduitController implements Initializable {
 		}	
 	}
 	
+	    //____________ Load Suppliers From DataBase : 
+		public void loadSuppliers() {
+		    ObservableList<String> supplierList = FXCollections.observableArrayList();
+		    try {
+		    	/*___ execute selectSQL ___*/
+		    	statement = (Statement) con.createStatement();
+	            resault = statement.executeQuery("SELECT * FROM `suppliers` WHERE 1");
+		        while (resault.next()) {
+		            String supplierName = resault.getString("Name");
+		            supplierList.add(supplierName);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } 
+
+		    /*___ add elements to box ___*/ 
+		    Fournisseur_Prd.setItems(supplierList);
+		}
+	
 	
 	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		con = DBConnection.connect();
+		loadSuppliers();
 		CategoryBox.setItems(FXCollections.observableArrayList("Spécialité médicament","Parapharmacerie","diététique"));
 		FormeBox.setItems(FXCollections.observableArrayList("Injéctable","Dérmique","Inhalées","Réctales"));
 	} 
