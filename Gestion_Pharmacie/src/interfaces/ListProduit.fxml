@@ -39,13 +39,24 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_DeleteProduct" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Supprimer" textAlignment="CENTER">
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_DeleteProduct" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: orange;" stylesheets="@../application/application.css" text="Supprimer" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#On_ClearALL" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Clear ALL !">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold Italic" size="11.0" />
+                     </font>
                   </Button>
                </children>
             </HBox>

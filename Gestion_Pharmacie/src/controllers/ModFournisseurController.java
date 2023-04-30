@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
@@ -18,6 +19,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -139,11 +141,12 @@ public class ModFournisseurController implements Initializable{
 		//____________ SELECT Suppliers To Table : 
 		public ObservableList<Fournisseur> data = FXCollections.observableArrayList() ;
 	    private void showSuppliers() {
+	    	/*___ clear table to avoid repetition ___*/
 	    	Table_FRN.getItems().clear();
 	    	 try {
+	    		    /*___ select suppliers ___*/
 		        	statement = (Statement) con.createStatement();
 		            resault = statement.executeQuery("SELECT * FROM `suppliers` WHERE 1");
- 
 		            while(resault.next()) {
 		        	   data.add(new Fournisseur(resault.getInt("Id")   ,resault.getString("Name"),resault.getString("Phone"),resault.getString("Email"),
 		        			   resault.getString("Payment"),resault.getString("RIB")));
@@ -151,6 +154,7 @@ public class ModFournisseurController implements Initializable{
 		        }catch(SQLException e) {
 		        	e.printStackTrace();
 		        }
+	    	    /*___ fill table ___*/
 	    	    ID_FRN.setCellValueFactory(new PropertyValueFactory<Fournisseur,String>("Id"));
 		        Nom_FRN.setCellValueFactory(new PropertyValueFactory<Fournisseur,String>("Name"));
 		        Email_FRN.setCellValueFactory(new PropertyValueFactory<Fournisseur,String>("Email"));
@@ -161,7 +165,7 @@ public class ModFournisseurController implements Initializable{
         
 	    
 	    //____________ DELETE Supplier from database and table  : 
-	    public void On_DeleteSupplier() {
+	    @FXML private void On_DeleteSupplier() {
 	    	/*___ select supplier ___*/
 	        Fournisseur selectedSupplier = Table_FRN.getSelectionModel().getSelectedItem();
 	        if (selectedSupplier != null) {
@@ -186,8 +190,7 @@ public class ModFournisseurController implements Initializable{
 	    }
 	    
 	    //____________ UPDATE Supplier informations  : 
-	    @FXML
-	    public void On_ModifySupplier() {
+	    @FXML private void On_ModifySupplier() {
 	    	/*___ select supplier ___*/
 	        Fournisseur selectedSupplier = Table_FRN.getSelectionModel().getSelectedItem();
 	        if (selectedSupplier != null) {
@@ -299,7 +302,32 @@ public class ModFournisseurController implements Initializable{
 	        return supplier;
 	    }
 
+       //________ On_ClearALL
+	    @FXML private void On_ClearALL() {
+	    	 // Create a confirmation dialog
+	        Alert confirmationDialog = new Alert(AlertType.CONFIRMATION);
+	        confirmationDialog.setTitle("Confirmation");
+	        confirmationDialog.setHeaderText("Clear All Suppliers");
+	        confirmationDialog.setContentText("Are you sure you want to delete all suppliers?");
 
+	        Optional<ButtonType> result = confirmationDialog.showAndWait();
+	        if (result.isPresent() && result.get() == ButtonType.OK) {
+	            // User confirmed, proceed with deletion
+	            data.clear(); // Clear the supplierData list
+
+	            String deleteSQL = "DELETE FROM suppliers";
+	            try {
+	                statement = (Statement) con.prepareStatement(deleteSQL);
+	                statement.execute(deleteSQL);
+	                Alert alert = new Alert(AlertType.INFORMATION, "All suppliers have been deleted successfully");
+	                alert.showAndWait();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	                Alert alert = new Alert(AlertType.WARNING, "Failed to delete suppliers");
+	                alert.showAndWait();
+	            }
+	        }
+	      }
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

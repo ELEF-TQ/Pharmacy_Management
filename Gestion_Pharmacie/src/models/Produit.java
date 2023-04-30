@@ -1,6 +1,6 @@
 package models;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Produit {
 	String Code ;
@@ -8,10 +8,10 @@ public class Produit {
 	String Category ;
 	String Forme ;
 	int Price ;
-	Date DateFab;
-	Date DateExp ;
+	LocalDate DateFab;
+	LocalDate DateExp ;
 	
-	public Produit(String code, String name, String category, String forme, int price, Date dateFab, Date dateExp) {
+	public Produit(String code, String name, String category, String forme, int price, LocalDate dateFab, LocalDate dateExp) {
 		super();
 		this.Code = code;
 		this.Name = name;
@@ -63,19 +63,19 @@ public class Produit {
 		Price = price;
 	}
 
-	public Date getDateFab() {
+	public LocalDate getDateFab() {
 		return DateFab;
 	}
 
-	public void setDateFab(Date dateFab) {
+	public void setDateFab(LocalDate dateFab) {
 		DateFab = dateFab;
 	}
 
-	public Date getDateExp() {
+	public LocalDate getDateExp() {
 		return DateExp;
 	}
 
-	public void setDateExp(Date dateExp) {
+	public void setDateExp(LocalDate dateExp) {
 		DateExp = dateExp;
 	}
 	
