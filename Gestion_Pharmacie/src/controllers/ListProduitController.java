@@ -37,7 +37,8 @@ import javafx.stage.Stage;
 import models.Produit;
 
 public class ListProduitController implements Initializable {
-  
+    
+	//____________________ Database Connection :
 	public Connection con ;
 	public Statement statement;
 	public ResultSet resault;
@@ -55,7 +56,7 @@ public class ListProduitController implements Initializable {
     @FXML
     private Button ModifProduct;
     
-    
+    //____________________ Table Controllers :
     @FXML
     private TableView<Produit> Table_Prd;
     @FXML

@@ -60,6 +60,17 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ButtonBar>
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: gray;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </Button>
                   <Button fx:id="showVente" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_ShowVente" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="List des Ventes" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
@@ -67,14 +78,6 @@
                      <HBox.margin>
                         <Insets right="40.0" />
                      </HBox.margin>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: gray;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
-                     <font>
-                        <Font name="System Bold Italic" size="14.0" />
-                     </font>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>

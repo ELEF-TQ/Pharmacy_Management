@@ -5,6 +5,8 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
+import com.mysql.jdbc.Statement;
+
 import java.io.IOException;
 import database.DBConnection;
 import java.net.URL;
@@ -12,8 +14,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -170,76 +178,141 @@ public class ModVenteController implements Initializable {
     }
 
     //____________________ Print The Bill :
-    @FXML private void On_printButton() {
+    @FXML
+    private void On_printButton() {
+
         /*___ get client informations ___*/
         String clientName = (ClientName != null) ? ClientName.getText() : "";
         String clientCNI = (ClientCNI != null) ? ClientCNI.getText() : "";
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = now.format(formatter);
 
-        /*___ create new documentPDF ___*/
-        PDDocument document = new PDDocument();
-        PDPage page = new PDPage();
-        document.addPage(page);
+        /*___ insert values to database Sale  ___*/
+        String insertSQL = "INSERT INTO `sales` (`Client_Name`, `Client_CNI`, `Sale_Date`, `Total_Price`) "
+                + "VALUES (?, ?, ?, ?)";
 
         try {
-            /*___ Create a new content stream for the PDF page __*/
-            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+            /*___ execute insertSQL ___*/
+            PreparedStatement preparedStatement = con.prepareStatement(insertSQL, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, clientName);
+            preparedStatement.setString(2, clientCNI);
+            preparedStatement.setString(3, formattedDateTime);
+            preparedStatement.setDouble(4, calculateTotalPrice());
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 1) {
+                ResultSet keys = preparedStatement.getGeneratedKeys();
+                if (keys.next()) {
+                    int SaleID = keys.getInt(1);
+                    for (String productEntry : selectedProductsList) {
+                        String[] parts = productEntry.split(" \\(Quantité : ");
+                        String productName = parts[0];
+                        int quantity = Integer.parseInt(parts[1].replace(")", ""));
 
-            /*___ Set font and font size for the text __*/
-            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10);
-
-            /*___ Set the starting position for the text __*/
-            float startX = 50;
-            float startY = page.getMediaBox().getHeight() - 50;
-
-            /*___ Set line spacing __*/
-            float lineHeight = 15;
-            contentStream.setLeading(lineHeight);
-
-            /*___ Write the information and total price to the PDF __*/
-            contentStream.beginText();
-            contentStream.newLineAtOffset(startX, startY);
-
-            /*___ Add client information __*/
-            contentStream.showText("Client Name: " + clientName);
-            contentStream.newLine();
-            contentStream.showText("Client CNI: " + clientCNI);
-            contentStream.newLine();
-            contentStream.newLine();
-
-            /*___ Add selected products __*/
-            contentStream.showText("Selected Products:");
-            contentStream.newLine();
-            for (String productEntry : selectedProductsList) {
-                contentStream.showText(productEntry);
-                contentStream.newLine();
+                        String SlectProduct = "SELECT `Code` FROM `products` WHERE Name=?";
+                        PreparedStatement selectStatement = con.prepareStatement(SlectProduct);
+                        selectStatement.setString(1, productName);
+                        ResultSet result = selectStatement.executeQuery();
+                        if (result.next()) {
+                            String productCode = result.getString("Code");
+                            String insertSaleSQL = "INSERT INTO `sales_products` (`Sale_ID`, `Product_Code`, `Quantity`) "
+                                    + "VALUES (?, ?, ?)";
+                            PreparedStatement insertStatement = con.prepareStatement(insertSaleSQL);
+                            insertStatement.setInt(1, SaleID);
+                            insertStatement.setString(2, productCode);
+                            insertStatement.setInt(3, quantity);
+                            insertStatement.executeUpdate();
+                            Alert alert = new Alert(AlertType.INFORMATION, "Vente ajouté avec succès");
+        			        alert.showAndWait();
+                        } else {
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setTitle("Error");
+                            alert.setHeaderText("Product not found");
+                            alert.setContentText("Product " + productName + " not found in the database.");
+                            alert.showAndWait();
+                        }
+                    }
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Sale not created");
+                    alert.setContentText("Error occurred while creating sale. Please try again.");
+                    alert.showAndWait();
+                }
             }
 
-            /*___ Add total price __*/
-            contentStream.showText("Total Price: MAD" + calculateTotalPrice());
+            /*___ create new documentPDF ___*/
+            PDDocument document = new PDDocument();
+            PDPage page = new PDPage();
+            document.addPage(page);
 
-            contentStream.endText();
-            contentStream.close();
-
-            /*___ Save the PDF document __*/
-            document.save("invoice.pdf");
-
-            System.out.println("PDF created successfully.");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
             try {
-                /*___ Close the PDF document __*/
-                document.close();
+                /*___ Create a new content stream for the PDF page __*/
+                PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+                /*___ Set font and font size for the text __*/
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 10);
+
+                /*___ Set the starting position for the text __*/
+                float startX = 50;
+                float startY = page.getMediaBox().getHeight() - 50;
+
+                /*___ Set line spacing __*/
+                float lineHeight = 15;
+                contentStream.setLeading(lineHeight);
+
+                /*___ Write the information and total price to the PDF __*/ 
+                /*___ Write the information and total price to the PDF __*/
+                contentStream.beginText();
+                contentStream.newLineAtOffset(startX, startY);
+
+                /*___ Add client information __*/
+                contentStream.showText("Client Name: " + clientName);
+                contentStream.newLine();
+                contentStream.newLine();
+                /*___ Add selected products ___*/
+                contentStream.showText("Selected Products:");
+                contentStream.newLine();
+                for (String productEntry : selectedProductsList) {
+                    contentStream.showText(productEntry);
+                    contentStream.newLine();
+                }
+
+                /*___ Add total price ___*/
+                contentStream.showText("Total Price: MAD" + calculateTotalPrice());
+
+                contentStream.endText();
+                contentStream.close();
+
+                /*___ Save the PDF document ___*/
+                document.save("invoice.pdf");
+
+                System.out.println("PDF created successfully.");
+
             } catch (IOException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    /*___ Close the PDF document ___*/
+                    document.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error occurred while creating sale");
+            alert.setContentText("Error message: " + e.getMessage());
+            alert.showAndWait();
         }
     }
 
+    
+
     //____________________ Show Sales List :
-    @FXML
-    private void On_ShowVente() {
+    @FXML private void On_ShowVente() {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/interfaces/ListVente.fxml"));
             Scene scene = new Scene(root);
@@ -250,7 +323,8 @@ public class ModVenteController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    
+   
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         con = DBConnection.connect();

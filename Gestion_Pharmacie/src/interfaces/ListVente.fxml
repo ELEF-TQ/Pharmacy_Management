@@ -17,11 +17,10 @@
          <children>
             <TableView prefHeight="480.0" prefWidth="732.0" stylesheets="@../application/application.css">
               <columns>
-                <TableColumn prefWidth="142.0" text="Nom" />
-                <TableColumn minWidth="0.0" prefWidth="139.0" text="Type" />
-                  <TableColumn prefWidth="141.0" text="Category" />
-                  <TableColumn prefWidth="156.0" text="Fournisseur" />
-                  <TableColumn prefWidth="153.0" text="Prix" />
+                <TableColumn fx:id="Client_Name" prefWidth="178.0" text="Client" />
+                <TableColumn fx:id="Client_CNI" minWidth="0.0" prefWidth="186.0" text="CNI" />
+                  <TableColumn fx:id="Date_Sale" prefWidth="186.0" text="Date_Vente" />
+                  <TableColumn fx:id="Total_Price" prefWidth="181.0" text="Prix_Total" />
               </columns>
             </TableView>
             <HBox alignment="CENTER" prefHeight="51.0" prefWidth="732.0">
@@ -29,7 +28,7 @@
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="213.0" styleClass="button" stylesheets="@../application/application.css">
                      <children>
                         <FontAwesomeIcon fill="WHITE" glyphName="FILE_TEXT_ALT" size="30" wrappingWidth="4.285714149475098" />
-                        <Button fx:id="Print" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#On_Print" prefHeight="40.0" prefWidth="191.0" stylesheets="@../application/application.css" text="Imprimer">
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#On_PrintTotalSales" prefHeight="40.0" prefWidth="191.0" stylesheets="@../application/application.css" text="Imprimer">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
