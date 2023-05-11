@@ -1,44 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="793.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AceuillController">
    <children>
-      <StackPane layoutX="53.0" layoutY="155.0" prefHeight="181.0" prefWidth="315.0" style="-fx-background-color: blue;">
-         <children>
-            <Label text="Total des Medicaments" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane layoutX="442.0" layoutY="267.0" prefHeight="181.0" prefWidth="315.0" style="-fx-background-color: blue;">
-         <children>
-            <Label text="Total Ventes" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <StackPane layoutX="53.0" layoutY="381.0" prefHeight="181.0" prefWidth="315.0" style="-fx-background-color: blue;">
-         <children>
-            <Label text="Total des Fournisseurs" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-         </children>
-      </StackPane>
-      <Label layoutX="137.0" layoutY="56.0" text="Pharmacie AL AMAL Tikiwine">
+      <Label layoutX="126.0" layoutY="26.0" styleClass="shadow" stylesheets="@../application/application.css" text="Pharmacie AL AMAL Tikiwine">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="System Bold Italic" size="36.0" />
          </font>
       </Label>
+      <AnchorPane layoutX="202.0" layoutY="131.0" prefHeight="120.0" prefWidth="389.0" stylesheets="@../application/application.css">
+         <children>
+            <FontAwesomeIcon fill="WHITE" glyphName="MEDKIT" layoutX="14.0" layoutY="88.0" size="80" />
+            <Label layoutX="144.0" layoutY="76.0" text="Total des médicaments" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="Total_Product" alignment="CENTER_RIGHT" layoutX="219.0" layoutY="14.0" prefHeight="29.0" prefWidth="156.0" text="0" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
+      <AnchorPane layoutX="202.0" layoutY="264.0" prefHeight="120.0" prefWidth="389.0" stylesheets="@../application/application.css">
+         <children>
+            <FontAwesomeIcon fill="WHITE" glyphName="AMBULANCE" layoutX="14.0" layoutY="88.0" size="80" text="" wrappingWidth="68.42856979370117" />
+            <Label layoutX="150.0" layoutY="76.0" prefHeight="29.0" prefWidth="225.0" text="Total des fournisseurs" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="Total_Suppliers" alignment="CENTER_RIGHT" layoutX="212.0" layoutY="14.0" prefHeight="29.0" prefWidth="156.0" text="0" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
+      <AnchorPane layoutX="202.0" layoutY="402.0" prefHeight="120.0" prefWidth="389.0" stylesheets="@../application/application.css">
+         <children>
+            <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="14.0" layoutY="88.0" size="80" />
+            <Label fx:id="Total_Sales" alignment="CENTER_RIGHT" layoutX="163.0" layoutY="15.0" prefHeight="29.0" prefWidth="156.0" text="0" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="177.0" layoutY="75.0" prefHeight="30.0" prefWidth="189.0" text="Total des Ventes" textFill="WHITE">
+               <font>
+                  <Font name="Bodoni MT" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="16.0" text="MAD" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB" size="24.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="card" />
+            <String fx:value="shadow" />
+         </styleClass>
+      </AnchorPane>
    </children>
 </AnchorPane>

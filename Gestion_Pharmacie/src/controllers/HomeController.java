@@ -63,7 +63,6 @@ public class HomeController implements Initializable  {
  				e1.printStackTrace();
  			}
          }
-    	 
          if(actionEvent.getSource()==btnProduit)
          {
          	try {
@@ -75,7 +74,6 @@ public class HomeController implements Initializable  {
  			}
            
          }
-         
         if (actionEvent.getSource() == btnFournisseur) {
         	try {
 				Page = FXMLLoader.load(getClass().getResource("/interfaces/ModFournisseur.fxml"));
@@ -88,17 +86,6 @@ public class HomeController implements Initializable  {
         if (actionEvent.getSource() == btnVente) {
         	try {
 				Page = FXMLLoader.load(getClass().getResource("/interfaces/ModVente.fxml"));
-				HomeContent.getChildren().removeAll();
-				HomeContent.getChildren().setAll(Page);
-    		} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-        }
-       
-        if(actionEvent.getSource()==btnSettings)
-        {
-        	try {
-				Page = FXMLLoader.load(getClass().getResource("/interfaces/ModSettings.fxml"));
 				HomeContent.getChildren().removeAll();
 				HomeContent.getChildren().setAll(Page);
     		} catch (IOException e1) {

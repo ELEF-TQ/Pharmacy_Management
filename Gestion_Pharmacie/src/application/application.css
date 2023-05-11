@@ -19,6 +19,12 @@
 	-fx-background-position: center center;
 	-fx-background-color: #FFFFFF;
 }
+.Interface_background {
+	-fx-background-image: url("/images/Background.jpg");
+	-fx-background-position: center center;
+	-fx-background-color: #FFFFFF;
+	
+}
 .tf_box{
 	-fx-background-color: transparent ;
 	-fx-border-color: #DEDEE4;
@@ -140,4 +146,14 @@
 
 .scroll-pane > .corner {
     -fx-background-color: black;
+}
+
+/*__________________ Card Styling______________ */
+.card{
+    -fx-background-color:linear-gradient(to right, #344250, #3c6382);
+    -fx-background-radius:4px;
+}
+
+.shadow{
+    -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.4), 6,0,0,0);
 }
