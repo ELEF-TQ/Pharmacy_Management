@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="PageContent" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModVenteController">
+<StackPane fx:id="PageContent" alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="732.0" styleClass="Interface_background" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ModVenteController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -60,7 +60,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ButtonBar>
-                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: gray;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_AnuulerVente" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: gray;" stylesheets="@../application/application.css" text="Annuler" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
                      </font>

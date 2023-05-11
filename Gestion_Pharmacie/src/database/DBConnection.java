@@ -2,10 +2,6 @@ package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 
 public class DBConnection {
     private static final String USERNAME = "root";
@@ -27,33 +23,6 @@ public class DBConnection {
     };
     
     
-    
-   
-    // checkLogIn :
-    public static int checkLogin(String username, String password) {
-        try (Connection con = connect()) {
-            if (con == null)
-                return -1;
-
-            String sql = "SELECT * FROM users WHERE username=? AND password=?";
-            try (PreparedStatement prest = con.prepareStatement(sql)) {
-                prest.setString(1, username);
-                prest.setString(2, password);
-
-                try (ResultSet rs = prest.executeQuery()) {
-                    while (rs.next()) {
-                        return 0;
-                    }
-                }
-            } catch (SQLException se) {
-                System.out.println("SQL Error !");
-            }
-        } catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("SQL Error");
-		}
-        return 1;
-    }
 
     
 }

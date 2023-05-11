@@ -20,9 +20,8 @@
 	-fx-background-color: #FFFFFF;
 }
 .Interface_background {
-	-fx-background-image: url("/images/Background.jpg");
-	-fx-background-position: center center;
-	-fx-background-color: #FFFFFF;
+	-fx-background-color: linear-gradient(to top, white, lightblue);
+    -fx-background-position: center center;
 	
 }
 .tf_box{
@@ -81,7 +80,6 @@
   -fx-min-height: 40px;
   -fx-padding: 10px;
   -fx-font-family: 'Courier New', Courier, monospace;
-  -fx-background-color: #e8e8e8;
   -fx-border-width: 0;
   -fx-border-radius: 10px;
 }

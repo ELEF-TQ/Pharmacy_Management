@@ -43,6 +43,9 @@ public class ModVenteController implements Initializable {
 	public java.sql.Statement statement;
 	public ResultSet resault;
 	
+	 
+
+	
 //____________________ Interface Controllers :
 	@FXML
 	private TextField ClientCNI;
@@ -323,8 +326,18 @@ public class ModVenteController implements Initializable {
             e.printStackTrace();
         }
     }
-    
    
+  //____________________ Cancel Sale :
+    @FXML private void On_AnuulerVente() {
+    	ClientCNI.setText("");
+    	ClientName.setText("");
+    	searchField.setText("");
+    	ObservableList<String> items = selectedProductList.getItems();
+    	items.clear();
+    
+    }
+    
+    
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         con = DBConnection.connect();

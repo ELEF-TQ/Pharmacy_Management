@@ -29,8 +29,7 @@ public class MainController {
    
   
 
-    @FXML
-    void On_SignIn() {
+    @FXML void On_SignIn() {
     	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
     	T.setToX(VBox.getLayoutX()*7.2);
     	T.play();
@@ -46,8 +45,7 @@ public class MainController {
     	});
     }
 
-    @FXML
-    void On_SignUp() {
+    @FXML void On_SignUp() {
     	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
     	T.setToX(0);
     	T.play();
@@ -57,7 +55,6 @@ public class MainController {
 			    VBox.getChildren().removeAll();
 			    VBox.getChildren().setAll(Page);
     		} catch (IOException e1) {
-    			System.out.print("Signin");
 				e1.printStackTrace();
 			}
     	});
@@ -68,6 +65,16 @@ public class MainController {
     	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
     	T.setToX(VBox.getLayoutX()*5.5);
     	T.play();
+    	
+
+			try {
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/SignUp.fxml"));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		    VBox.getChildren().removeAll();
+		    VBox.getChildren().setAll(Page);
+		
     }
 
 }
