@@ -15,7 +15,7 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="524.0" prefWidth="732.0">
          <children>
-            <TableView prefHeight="480.0" prefWidth="732.0" stylesheets="@../application/application.css">
+            <TableView fx:id="Table_Sales" prefHeight="480.0" prefWidth="732.0" stylesheets="@../application/application.css">
               <columns>
                 <TableColumn fx:id="Client_Name" prefWidth="178.0" text="Client" />
                 <TableColumn fx:id="Client_CNI" minWidth="0.0" prefWidth="186.0" text="CNI" />

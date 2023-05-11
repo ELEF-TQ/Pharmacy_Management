@@ -6,7 +6,6 @@ public class Client {
 	
 	
 	public Client(String client_Name, String client_CNI) {
-		super();
 		Client_Name = client_Name;
 		Client_CNI = client_CNI;
 	}

@@ -227,7 +227,7 @@ public class ListProduitController implements Initializable {
     }
 
    
-  //________ On_ClearALL
+    //________ On_ClearALL
     @FXML private void On_ClearALL() {
         // Create a confirmation dialog
         Alert confirmationDialog = new Alert(AlertType.CONFIRMATION);
