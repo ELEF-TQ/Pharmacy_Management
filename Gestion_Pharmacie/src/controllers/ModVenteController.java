@@ -224,21 +224,19 @@ public class ModVenteController implements Initializable {
                         } else {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("Error");
-                            alert.setHeaderText("Product not found");
-                            alert.setContentText("Product " + productName + " not found in the database.");
+                            alert.setHeaderText("Produit non trouvé");
+                            alert.setContentText("Produit " + productName + " non trouvé dans la base de données.");
                             alert.showAndWait();
                         }
                     }
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Success");
-                    alert.setHeaderText("Sale added successfully");
-                    alert.setContentText("Vente ajoutée avec succès");
+                    Alert alert = new Alert(AlertType.INFORMATION, "facture créé avec succès");
+                    alert.showAndWait();
                     alert.showAndWait();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
-                    alert.setHeaderText("Sale not created");
-                    alert.setContentText("Error occurred while creating sale. Please try again.");
+                    alert.setHeaderText("Vente non créée");
+                    alert.setContentText("Erreur lors de la création de la vente. Veuillez réessayer.");
                     alert.showAndWait();
                 }
             }
@@ -280,16 +278,13 @@ public class ModVenteController implements Initializable {
                 }
 
                 /*___ Add total price ___*/
-                contentStream.showText("Total Price: MAD" + calculateTotalPrice());
+                contentStream.showText("-- Prix Total : MAD" + calculateTotalPrice());
 
                 contentStream.endText();
                 contentStream.close();
 
                 /*___ Save the PDF document ___*/
-                document.save("invoice.pdf");
-
-                System.out.println("PDF created successfully.");
-
+                document.save("facture.pdf");
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {

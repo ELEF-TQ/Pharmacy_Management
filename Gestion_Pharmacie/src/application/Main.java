@@ -8,8 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 
-
-
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {

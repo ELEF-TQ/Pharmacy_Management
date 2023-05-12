@@ -17,40 +17,35 @@ import javafx.scene.control.TextField;
 public class SignupController {
 	
 	//____________________ Database Connection :
-		public Connection con ;
-		public java.sql.Statement statement;
-		public ResultSet resault;
-		
-
+	public Connection con ;
+	public java.sql.Statement statement;
+	public ResultSet resault;
+	
+	//___________ Interface Controllers :
     @FXML
     private PasswordField confirmpassword;
-
     @FXML
     private TextField email;
-
     @FXML
     private PasswordField password;
-
     @FXML
     private TextField username;
 
-    @FXML
-    void On_SignUp(ActionEvent event) {
+    //___________ Sign Up :
+    @FXML void On_SignUp(ActionEvent event) {
     	 String enteredUsername = username.getText();
     	    String enteredPassword = password.getText();
     	    String enteredEmail = email.getText();
     	    String confirmPassword = confirmpassword.getText();
 
     	    if (enteredUsername.isEmpty() || enteredPassword.isEmpty() || enteredEmail.isEmpty() || confirmPassword.isEmpty()) {
-    	        showAlert(AlertType.ERROR, "Empty Fields", "Please fill in all the required fields.");
+    	        showAlert(AlertType.ERROR, "champs vides", "Veuillez remplir tous les champs obligatoires.");
     	        return;
     	    }
-
     	    if (!enteredPassword.equals(confirmPassword)) {
-    	        showAlert(AlertType.ERROR, "Password Mismatch", "The entered passwords do not match.");
+    	        showAlert(AlertType.ERROR, "Mot de passe incorrect", "Les mots de passe saisis ne correspondent pas.");
     	        return;
     	    }
-
     	    try {
     	        con = DBConnection.connect();
     	        String query = "INSERT INTO users (username, password, email) VALUES (?, ?, ?)";
@@ -62,22 +57,22 @@ public class SignupController {
     	        int rowsAffected = statement.executeUpdate();
 
     	        if (rowsAffected > 0) {
-    	            showAlert(AlertType.INFORMATION, "Registration Successful", "Your account has been created successfully.");
+    	            showAlert(AlertType.INFORMATION, "Inscription réussie", "Votre compte a été créé avec succès.");
     	            username.clear();
     	            password.clear();
     	            email.clear();
     	            confirmpassword.clear();
     	        } else {
-    	            showAlert(AlertType.ERROR, "Registration Failed", "Failed to create an account. Please try again.");
+    	            showAlert(AlertType.ERROR, "échec de l'enregistrement", "Impossible de créer un compte. Veuillez réessayer.");
     	        }
 
     	        statement.close();
     	    } catch (SQLException e) {
     	        e.printStackTrace();
-    	        // TODO: Handle database error
     	    }
-
     }
+    
+    //___________ Alert Showing :
     private void showAlert(AlertType alertType, String title, String content) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

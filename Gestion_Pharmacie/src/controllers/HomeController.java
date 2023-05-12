@@ -20,39 +20,31 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable  {
 
+	//___________ Interface Controllers :
     @FXML
     private VBox pnItems = null;
     @FXML
     private Button btnOverview;
-
     @FXML
     private Button btnProduit;
-
     @FXML
     private Button btnFournisseur;
-
-
     @FXML
     private Button btnVente;
-
     @FXML
     private Button btnSettings;
-
     @FXML
     private Button btnSignout;
-
     @FXML
     private Pane HomeContent;
-    
     @FXML
     private AnchorPane Application;
 
-    
     private Parent Page ;
     private Stage stage ;
 
 
-
+    //___________ handleClicks :
     public void handleClicks(ActionEvent actionEvent) {
     	 if (actionEvent.getSource() == btnOverview) {
          	try {

@@ -3,32 +3,20 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-
-import javafx.scene.control.Button;
-
 import javafx.util.Duration;
 
 public class MainController {
 
+	//___________ Interface Controllers :
     @FXML
     private javafx.scene.layout.VBox VBox;
-
-    @FXML
-    private Button btn_seconnecter;
-
-    @FXML
-    private Button btn_sinscrire;
-    
     private Parent Page ;
     
-   
-  
-
+    //___________ Sign In :
     @FXML void On_SignIn() {
     	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
     	T.setToX(VBox.getLayoutX()*7.2);
@@ -45,6 +33,7 @@ public class MainController {
     	});
     }
 
+    //___________ Sign Up :
     @FXML void On_SignUp() {
     	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
     	T.setToX(0);
@@ -65,7 +54,6 @@ public class MainController {
     	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
     	T.setToX(VBox.getLayoutX()*5.5);
     	T.play();
-    	
 
 			try {
 				Page = FXMLLoader.load(getClass().getResource("/interfaces/SignUp.fxml"));

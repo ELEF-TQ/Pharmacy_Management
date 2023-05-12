@@ -4,43 +4,35 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Set;
-
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-
 import database.DBConnection;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import models.Vente;
 
 public class ListVenteController implements Initializable {
 
-    // Database Connection
+	//___________ Database Connection :
     public Connection con;
     public java.sql.Statement statement;
     public ResultSet result;
 
-    // Table controllers
+    //___________ Table controllers
     @FXML
     private TableView<Vente> Table_Sales;
     @FXML
@@ -52,7 +44,7 @@ public class ListVenteController implements Initializable {
     @FXML
     private TableColumn<Vente, Integer> Total_Price;
 
-    // Print Total Sales
+    //___________ Print Total Sales
     @FXML public void On_PrintTotalSales() {
         try {
             PDDocument document = new PDDocument();
@@ -89,7 +81,6 @@ public class ListVenteController implements Initializable {
 
             String currentClientName = "";
             String currentClientCNI = "";
-            int totalQuantity = 0;
             int totalPrice =0;
             
             while (result.next()) {
@@ -102,7 +93,7 @@ public class ListVenteController implements Initializable {
                     /*___ New client, print the total price for the previous client (if any) ___*/
                     if (!currentClientName.isEmpty()) {
                         /*___ Print the total price for the previous client ___*/
-                        contentStream.showText("---- Total Price: " + totalPrice);
+                        contentStream.showText("---- Prix Total : " + totalPrice);
                         contentStream.newLine();
                         contentStream.newLine();
                         /*___ Print the separator between clients ___*/
@@ -113,9 +104,9 @@ public class ListVenteController implements Initializable {
                     }
 
                     /*___ Print the client information ___*/
-                    contentStream.showText("Client Name: " + clientName);
+                    contentStream.showText("Nom Client: " + clientName);
                     contentStream.newLine();
-                    contentStream.showText("Client CNI: " + clientCNI);
+                    contentStream.showText("CNI Client: " + clientCNI);
                     contentStream.newLine();
                     contentStream.newLine();
 
@@ -127,14 +118,14 @@ public class ListVenteController implements Initializable {
                     currentClientCNI = clientCNI;
 
                     /*___ Print the products header ___*/
-                    contentStream.showText("---- Products:");
+                    contentStream.showText("---- Les Produits acheté:");
                     contentStream.newLine();
                 }
 
                 /*___ Write the current product information ___*/
-                contentStream.showText("Product Code: " + productCode);
+                contentStream.showText("CodePrd: " + productCode);
                 contentStream.newLine();
-                contentStream.showText("Quantity: " + quantity);
+                contentStream.showText("Qte: " + quantity);
                 contentStream.newLine();
 
             }
@@ -143,7 +134,7 @@ public class ListVenteController implements Initializable {
             if (!currentClientName.isEmpty()) {
                 /*___ Print the total price for the last client ___*/
             	contentStream.newLine();
-                contentStream.showText("---- Total Price: " + totalPrice);
+                contentStream.showText("---- Prix Total: " + totalPrice);
                 contentStream.newLine();
                 contentStream.newLine();
                 /*___ Print the separator for the last client ___*/
@@ -152,10 +143,6 @@ public class ListVenteController implements Initializable {
                 contentStream.newLine();
                 contentStream.newLine();
             }
-
-           
-
-            
 
             /*___ End the text content stream ___*/
             contentStream.endText();
@@ -168,20 +155,15 @@ public class ListVenteController implements Initializable {
 
             /*___ Close the PDF document ___*/
             document.close();
-
-               
-
-
-            System.out.println("PDF created successfully.");
-
+            Alert alert = new Alert(AlertType.INFORMATION, "Vente_Total créé avec succès");
+            alert.showAndWait();
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    
-    
+    //___________ Select Sales Data :
     private Map<String, Vente> fetchSalesData() {
         Map<String, Vente> salesData = new HashMap<>();
         try {
@@ -196,15 +178,8 @@ public class ListVenteController implements Initializable {
                 String clientCNI = result.getString("Client_CNI");
                 int totalPrice = result.getInt("Total_Price");
                 LocalDate saleDate = result.getDate("Sale_Date").toLocalDate();
-
-                // Check if the client is already in the database
-                //if (isClientInDatabase(clientCNI)) {
-                    // Add the new total price to the existing total price in the database
-                 //   addTotalPriceInDatabase(clientCNI, totalPrice);
-               // } else {
-                    Vente vente = new Vente(saleDate, totalPrice, clientName, clientCNI);
-                    salesData.put(clientCNI, vente);
-               // }
+                Vente vente = new Vente(saleDate, totalPrice, clientName, clientCNI);
+                salesData.put(clientCNI, vente);
             }
 
             result.close();
@@ -216,45 +191,7 @@ public class ListVenteController implements Initializable {
         return salesData;
     }
 
-    /*
-    private boolean isClientInDatabase(String clientCNI) {
-        try {
-            String selectClient = "SELECT COUNT(*) AS count FROM sales WHERE Client_CNI = ?";
-            statement = con.prepareStatement(selectClient);
-            ((PreparedStatement) statement).setString(1, clientCNI);
-            result = statement.executeQuery(selectClient);
-            result.next();
-            int count = result.getInt("count");
-            result.close();
-            statement.close();
-            return count > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    private void addTotalPriceInDatabase(String clientCNI, int newTotalPrice) {
-        try {
-            String updateQuery = "UPDATE sales SET Total_Price = Total_Price + ? WHERE Client_CNI = ?";
-            PreparedStatement preparedStatement = con.prepareStatement(updateQuery);
-            preparedStatement.setInt(1, newTotalPrice);
-            preparedStatement.setString(2, clientCNI);
-            preparedStatement.executeUpdate();
-            preparedStatement.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-*/
-
-
-
-
-
-
-            // Load sales from database
+    //___________ Load sales from database
     private void showSales() {
         Table_Sales.getItems().clear();
         Client_Name.setCellValueFactory(new PropertyValueFactory<Vente, String>("ClientName"));
@@ -263,12 +200,12 @@ public class ListVenteController implements Initializable {
         Total_Price.setCellValueFactory(new PropertyValueFactory<Vente, Integer>("TotalPrice"));
         Map<String, Vente> salesData = fetchSalesData();
         Table_Sales.getItems().addAll(salesData.values());
+     }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        con = DBConnection.connect();
+        showSales();
     }
-
-
-            @Override
-            public void initialize(URL url, ResourceBundle resourceBundle) {
-                con = DBConnection.connect();
-                showSales();
-            }
-        }
+}
