@@ -59,6 +59,8 @@ public class ModProduitController implements Initializable {
     private TextField Nom_Prd;
     @FXML
     private TextField Prix_Prd;
+    @FXML
+    private TextField Qte_Prd ;
 
 
    
@@ -68,6 +70,7 @@ public class ModProduitController implements Initializable {
 	    Code_Prd.setText("");
 	    Nom_Prd.setText("");
 	    Prix_Prd.setText("");
+	    Qte_Prd.setText("");
 	    CategoryBox.setPromptText("Catégorie");
 	    FormeBox.setPromptText("Forme");
 	    Fournisseur_Prd.setPromptText("Fournisseur");
@@ -98,6 +101,7 @@ public class ModProduitController implements Initializable {
 		String category = CategoryBox.getValue();
 		String forme = FormeBox.getValue();
 		int price = 0;
+		int quantity = 0 ;
 		LocalDate dateFab = DateFab_Prd.getValue();
 		LocalDate dateExp = DateExp_Prd.getValue();
 
@@ -109,6 +113,7 @@ public class ModProduitController implements Initializable {
 		}
 		try {
 		    price = Integer.parseInt(Prix_Prd.getText());
+		    quantity = Integer.parseInt(Qte_Prd.getText());
 		} catch (NumberFormatException e) {
 		    Alert alert = new Alert(AlertType.WARNING, "Veuillez entrer une valeur numérique pour le prix.");
 		    alert.showAndWait();
@@ -117,9 +122,9 @@ public class ModProduitController implements Initializable {
 		
         
 		/*___ insert values to database  ___*/
-		String insertSQL = "INSERT INTO `products` (`Code`, `Name`, `Category`, `Forme`, `Price`, `DateFab`, `DateExp`) "
+		String insertSQL = "INSERT INTO `products` (`Code`, `Name`, `Category`, `Forme`, `Price`, `DateFab`, `DateExp`, `Quantity`) "
 		        + "VALUES ('" + code + "', '" + name + "', '" + category + "', '" + forme + "', " + price + ", '"
-		        + dateFab.toString() + "', '" + dateExp.toString() + "')";
+		        + dateFab.toString() + "', '" + dateExp.toString() + "', '" + quantity  + "')";
 
 		try {
 			/*___ execute insertSQL ___*/

@@ -8,16 +8,18 @@ public class Produit {
 	String Category ;
 	String Forme ;
 	int Price ;
+	int Quantity ;
 	LocalDate DateFab;
 	LocalDate DateExp ;
 	
-	public Produit(String code, String name, String category, String forme, int price, LocalDate dateFab, LocalDate dateExp) {
+	public Produit(String code, String name, String category, String forme, int price,int quantity , LocalDate dateFab, LocalDate dateExp) {
 		super();
 		this.Code = code;
 		this.Name = name;
 		this.Category = category;
 		this.Forme = forme;
 		this.Price = price;
+		this.Quantity = quantity;
 		this.DateFab = dateFab;
 		this.DateExp = dateExp;
 	}
@@ -26,6 +28,16 @@ public class Produit {
 	public String getCode() {
 		return Code;
 	}
+
+	public int getQuantity() {
+		return Quantity;
+	}
+
+
+	public void setQuantity(int quantity) {
+		Quantity = quantity;
+	}
+
 
 	public void setCode(String code) {
 		Code = code;

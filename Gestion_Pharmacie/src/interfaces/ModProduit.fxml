@@ -33,11 +33,7 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="319.0">
-                     <children>
-                        <ComboBox fx:id="Fournisseur_Prd" prefHeight="43.0" prefWidth="179.0" promptText="Fournisseur" styleClass="input" stylesheets="@../application/application.css" />
-                     </children>
-                  </HBox>
+                  <TextField fx:id="Qte_Prd" maxWidth="293.0" prefHeight="40.0" prefWidth="293.0" promptText="Qantité" styleClass="input" stylesheets="@../application/application.css" />
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="342.0" prefHeight="477.0" prefWidth="319.0">
@@ -47,6 +43,7 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </ComboBox>
+                  <ComboBox fx:id="Fournisseur_Prd" prefHeight="43.0" prefWidth="179.0" promptText="Fournisseur" styleClass="input" stylesheets="@../application/application.css" />
                   <ComboBox fx:id="FormeBox" prefWidth="150.0" promptText="Forme" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />

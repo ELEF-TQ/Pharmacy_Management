@@ -16,7 +16,7 @@ public class DBConnection {
 				con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
 				return con;
 			} catch (Exception e) {
-				System.out.print("connection Failed");
+				System.out.println("erreur de connection a la base de données");
 				e.printStackTrace();
 				return null ;
 			}

@@ -111,34 +111,80 @@ public class ModVenteController implements Initializable {
     }
   
 //____________________ Add Products been sold :
-    @FXML private void onAddProduct() {
-    	/*___ chose quantity for product ___*/
-        String selectedProduct = productList.getSelectionModel().getSelectedItem();
-        if (selectedProduct != null && !selectedProductsList.contains(selectedProduct)) {
-            TextInputDialog dialog = new TextInputDialog("1");
-            dialog.setTitle("Quantité de Produit");
-            dialog.setHeaderText("Entrer la quantité pour " + selectedProduct);
-            dialog.setContentText("Quantité :");
-            Optional<String> result = dialog.showAndWait();
-            result.ifPresent(quantityStr -> {
-                try {
-                    int quantity = Integer.parseInt(quantityStr);
-                    String productEntry = selectedProduct + " (Quantité : " + quantity + ")";
-                    /*___ update selectedProducts list ___*/
-                    selectedProductsList.add(productEntry);
-                    selectedProductList.setItems(selectedProductsList);
-                } catch (NumberFormatException e) {
-                    e.printStackTrace();
-                    Alert alert = new Alert(AlertType.WARNING, "Votre choix n'est pas valide .");
-                    alert.showAndWait();
-                }
-            });
-        }
-        /*___ clear search field ___*/
-        searchField.clear();
-    }
+	@FXML private void onAddProduct() {
+	    String selectedProduct = productList.getSelectionModel().getSelectedItem();
+	    if (selectedProduct != null && !selectedProductsList.contains(selectedProduct)) {
+	        TextInputDialog dialog = new TextInputDialog("1");
+	        dialog.setTitle("Quantité de Produit");
+	        dialog.setHeaderText("Entrer la quantité pour " + selectedProduct);
+	        dialog.setContentText("Quantité :");
+	        Optional<String> result = dialog.showAndWait();
+	        result.ifPresent(quantityStr -> {
+	            try {
+	                int quantity = Integer.parseInt(quantityStr);
+	                if (quantity <= 0) {
+	                    Alert alert = new Alert(AlertType.WARNING, "La quantité doit être supérieure à zéro.");
+	                    alert.showAndWait();
+	                    return;
+	                }
+	                int currentQuantity = getProductQuantityFromDatabase(selectedProduct);
+	                if (quantity > currentQuantity) {
+	                    Alert alert = new Alert(AlertType.WARNING, "La quantité choisie dépasse la quantité disponible.");
+	                    alert.showAndWait();
+	                    return;
+	                }
+	                int newQuantity = currentQuantity - quantity;
+	                updateProductQuantityInDatabase(selectedProduct, newQuantity);
+	                String productEntry = selectedProduct + " (Quantité : " + quantity + ")";
+	                selectedProductsList.add(productEntry);
+	                selectedProductList.setItems(selectedProductsList);
+	            } catch (NumberFormatException e) {
+	                e.printStackTrace();
+	                Alert alert = new Alert(AlertType.WARNING, "Votre choix n'est pas valide.");
+	                alert.showAndWait();
+	            }
+	        });
+	    }
+	    searchField.clear();
+	}
 
-    //____________________ Remove Product From List :
+	private int getProductQuantityFromDatabase(String productName) {
+	    int quantity = 0;
+	    try {
+	        String query = "SELECT Quantity FROM products WHERE Name = ?";
+	        PreparedStatement statement = con.prepareStatement(query);
+	        statement.setString(1, productName);
+	        ResultSet resultSet = statement.executeQuery();
+
+	        if (resultSet.next()) {
+	            quantity = resultSet.getInt("Quantity");
+	        }
+
+	        resultSet.close();
+	        statement.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        // Handle database error
+	    }
+	    return quantity;
+	}
+
+	private void updateProductQuantityInDatabase(String productName, int newQuantity) {
+	    try {
+	        String query = "UPDATE products SET Quantity = ? WHERE Name = ?";
+	        PreparedStatement statement = con.prepareStatement(query);
+	        statement.setInt(1, newQuantity);
+	        statement.setString(2, productName);
+	        statement.executeUpdate();
+	        statement.close();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        // Handle database error
+	    }
+	}
+
+
+//____________________ Remove Product From List :
     @FXML
     private void onRemoveProduct() {
         String selectedProduct = selectedProductList.getSelectionModel().getSelectedItem();
@@ -149,7 +195,7 @@ public class ModVenteController implements Initializable {
         }
     }
 
-    //____________________ Calculate Total Price :
+//____________________ Calculate Total Price :
     private double calculateTotalPrice() {
         double totalPrice = 0.0;
         for (String productEntry : selectedProductsList) {
@@ -177,7 +223,7 @@ public class ModVenteController implements Initializable {
         return totalPrice;
     }
 
-    //____________________ Print The Bill :
+//____________________ Print The Bill :
     @FXML private void On_printButton() {
         // Get client information
         String clientName = (ClientName != null) ? ClientName.getText() : "";
@@ -186,6 +232,11 @@ public class ModVenteController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = now.format(formatter);
 
+        if (clientName.isEmpty() || clientCNI.isEmpty()) {
+        	Alert alert = new Alert(AlertType.WARNING, "Veuillez saisir à la fois le nom du client et le CNI.");
+            alert.showAndWait();
+            return;
+        }
         // Insert values into the sales table
         String insertSQL = "INSERT INTO `sales` (`Client_Name`, `Client_CNI`, `Sale_Date`, `Total_Price`) "
                 + "VALUES (?, ?, ?, ?)";

@@ -51,10 +51,6 @@ public class ListProduitController implements Initializable {
 	    }
 	}
 
-    @FXML
-    private Button DeleteProduct;
-    @FXML
-    private Button ModifProduct;
     
     //____________________ Table Controllers :
     @FXML
@@ -229,7 +225,6 @@ public class ListProduitController implements Initializable {
    
     //________ On_ClearALL
     @FXML private void On_ClearALL() {
-        // Create a confirmation dialog
         Alert confirmationDialog = new Alert(AlertType.CONFIRMATION);
         confirmationDialog.setTitle("Confirmation");
         confirmationDialog.setHeaderText("Supprimer tous les produits");
@@ -237,8 +232,7 @@ public class ListProduitController implements Initializable {
 
         Optional<ButtonType> result = confirmationDialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            // User confirmed, proceed with deletion
-            data.clear(); // Clear the data list
+            data.clear(); 
 
             String deleteSQL = "DELETE FROM products";
             try {
@@ -267,7 +261,7 @@ public class ListProduitController implements Initializable {
 
             while (resault.next()) {
                 data.add(new Produit(resault.getString("Code"), resault.getString("Name"), resault.getString("Category"),
-                        resault.getString("Forme"), resault.getInt("Price"),
+                        resault.getString("Forme"), resault.getInt("Price"),resault.getInt("Quantity"),
                         resault.getDate("DateFab").toLocalDate(), resault.getDate("DateExp").toLocalDate()));
             }
         } catch (SQLException e) {

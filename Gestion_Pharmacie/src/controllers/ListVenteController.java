@@ -9,16 +9,21 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import com.mysql.jdbc.Statement;
+
 import database.DBConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
@@ -43,6 +48,8 @@ public class ListVenteController implements Initializable {
     private TableColumn<Vente,Date> Date_Sale;
     @FXML
     private TableColumn<Vente, Integer> Total_Price;
+    
+    Map<String, Vente> salesData = new HashMap<>();
 
     //___________ Print Total Sales
     @FXML public void On_PrintTotalSales() {
@@ -165,7 +172,6 @@ public class ListVenteController implements Initializable {
 
     //___________ Select Sales Data :
     private Map<String, Vente> fetchSalesData() {
-        Map<String, Vente> salesData = new HashMap<>();
         try {
             String selectVente = "SELECT sales.Client_Name, sales.Client_CNI, sales.Sale_Date, sales_products.Product_Code, sales_products.Quantity, sales.Total_Price " +
                     "FROM sales " +
@@ -201,6 +207,31 @@ public class ListVenteController implements Initializable {
         Map<String, Vente> salesData = fetchSalesData();
         Table_Sales.getItems().addAll(salesData.values());
      }
+    
+  //________ On_ClearALL
+    @FXML private void On_ClearALL() {
+        Alert confirmationDialog = new Alert(AlertType.CONFIRMATION);
+        confirmationDialog.setTitle("Confirmation");
+        confirmationDialog.setHeaderText("Supprimer tous les Vente");
+        confirmationDialog.setContentText("Voulez-vous vraiment supprimer tous l'historique des Ventes ?");
+
+        Optional<ButtonType> result = confirmationDialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+        	salesData.clear(); 
+
+            String deleteSQL = "DELETE FROM products";
+            try {
+                statement = (Statement) con.prepareStatement(deleteSQL);
+                statement.execute(deleteSQL);
+                Alert alert = new Alert(AlertType.INFORMATION, "Tous les produits ont été supprimés avec succès");
+                alert.showAndWait();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Alert alert = new Alert(AlertType.WARNING, "Échec de suppression des produits");
+                alert.showAndWait();
+            }
+        }
+      }
 
 
     @Override

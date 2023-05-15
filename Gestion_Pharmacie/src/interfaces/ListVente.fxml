@@ -40,7 +40,18 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
                   </HBox>
+                  <Button mnemonicParsing="false" onAction="#On_ClearALL" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: red;" stylesheets="@../application/application.css" text="Clear ALL !">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <font>
+                        <Font name="System Bold Italic" size="11.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </children>
