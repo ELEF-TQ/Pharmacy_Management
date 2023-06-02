@@ -35,6 +35,7 @@ public class ListVenteController implements Initializable {
 	//___________ Database Connection :
     public Connection con;
     public java.sql.Statement statement;
+    public java.sql.Statement statement2;
     public ResultSet result;
 
     //___________ Table controllers
@@ -125,7 +126,7 @@ public class ListVenteController implements Initializable {
                     currentClientCNI = clientCNI;
 
                     /*___ Print the products header ___*/
-                    contentStream.showText("---- Les Produits acheté:");
+                    contentStream.showText("--Médicaments:");
                     contentStream.newLine();
                 }
 
@@ -219,12 +220,17 @@ public class ListVenteController implements Initializable {
         if (result.isPresent() && result.get() == ButtonType.OK) {
         	salesData.clear(); 
 
-            String deleteSQL = "DELETE FROM products";
+            String deleteSQL = "DELETE FROM sales_products WHERE Sale_ID IN (SELECT id FROM sales)";
+            String deleteSQL2 = "DELETE FROM sales";
             try {
                 statement = (Statement) con.prepareStatement(deleteSQL);
                 statement.execute(deleteSQL);
+                statement2 = (Statement) con.prepareStatement(deleteSQL2);
+                statement2.execute(deleteSQL2);
                 Alert alert = new Alert(AlertType.INFORMATION, "Tous les produits ont été supprimés avec succès");
                 alert.showAndWait();
+                showSales();
+                
             } catch (SQLException e) {
                 e.printStackTrace();
                 Alert alert = new Alert(AlertType.WARNING, "Échec de suppression des produits");

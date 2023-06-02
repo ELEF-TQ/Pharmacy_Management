@@ -282,7 +282,6 @@ public class ModVenteController implements Initializable {
                     }
                     Alert alert = new Alert(AlertType.INFORMATION, "facture créé avec succès");
                     alert.showAndWait();
-                    alert.showAndWait();
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
@@ -317,11 +316,11 @@ public class ModVenteController implements Initializable {
                 contentStream.newLineAtOffset(startX, startY);
 
                 /*___ Add client information __*/
-                contentStream.showText("Client Name: " + clientName);
+                contentStream.showText("Nom Client: " + clientName);
                 contentStream.newLine();
                 contentStream.newLine();
                 /*___ Add selected products ___*/
-                contentStream.showText("Selected Products:");
+                contentStream.showText("--Médicaments :");
                 contentStream.newLine();
                 for (String productEntry : selectedProductsList) {
                     contentStream.showText(productEntry);
@@ -349,7 +348,6 @@ public class ModVenteController implements Initializable {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            // Handle any database-related errors
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("Database error");
