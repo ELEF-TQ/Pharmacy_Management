@@ -18,7 +18,7 @@
               <columns>
                 <TableColumn fx:id="Code_Prd" prefWidth="55.0" text="Code" />
                 <TableColumn fx:id="Nom_Prd" minWidth="0.0" prefWidth="119.0" text="Nom" />
-                  <TableColumn fx:id="Category_Prd" prefWidth="112.0" text="Category" />
+                  <TableColumn fx:id="Category_Prd" prefWidth="112.0" text="Catégorie" />
                   <TableColumn fx:id="Forme_Prd" prefWidth="119.0" text="Forme" />
                   <TableColumn fx:id="Prix_Prd" prefWidth="98.0" text="Prix" />
                   <TableColumn fx:id="Fournisseur_Prd" prefWidth="114.0" text="Fournisseur" />
