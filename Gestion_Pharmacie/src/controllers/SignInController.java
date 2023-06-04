@@ -59,10 +59,7 @@ public class SignInController implements Initializable {
 					e.printStackTrace();
 				}
 				stage.setScene(new Scene(root));
-				stage.centerOnScreen();
-				
-				
-				
+				stage.centerOnScreen();	
 			} else {
 				showAlert(AlertType.ERROR, "Justificatifs d’identité non valides", "Veuillez entrer un nom d’utilisateur et un mot de passe valides.");
 			}
@@ -77,7 +74,7 @@ public class SignInController implements Initializable {
 	//___________ Forgot Password :
 	@FXML void On_forgotPass() {
 	    TextInputDialog dialog = new TextInputDialog();
-	    dialog.setTitle("Forgot Password");
+	    dialog.setTitle("Mot de passe oubliée");
 	    dialog.setHeaderText("Enter your email address");
 	    dialog.setContentText("Email:");
 

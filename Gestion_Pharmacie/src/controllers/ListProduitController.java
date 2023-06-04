@@ -249,7 +249,7 @@ public class ListProduitController implements Initializable {
       }
     
    
-    //____________ SELECT Suppliers To Table : 
+    //____________ SELECT Product To Table : 
     public ObservableList<Produit> data = FXCollections.observableArrayList();
     private void showProducts() {
     	/*___ clear table to avoid repetition ___*/
