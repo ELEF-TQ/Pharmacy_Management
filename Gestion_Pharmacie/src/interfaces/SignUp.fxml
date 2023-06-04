@@ -13,11 +13,11 @@
         <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
     <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="S'inscrire" />
-    <TextField id="usernameField" fx:id="username" promptText="Username" styleClass="input" stylesheets="@../application/application.css" />
+    <TextField id="usernameField" fx:id="username" promptText="Nom d'utilisateur" styleClass="input" stylesheets="@../application/application.css" />
    <TextField id="usernameField" fx:id="email" promptText="Email" styleClass="input" stylesheets="@../application/application.css" />
-    <PasswordField id="passwordField" fx:id="password" promptText="Password" styleClass="input" stylesheets="@../application/application.css" />
-   <PasswordField id="passwordField" fx:id="confirmpassword" promptText="Confirme password" styleClass="input" stylesheets="@../application/application.css" />
-     <Button onAction="#On_SignUp" style="-fx-background-color: green;" styleClass="button_log" stylesheets="@../application/application.css" text="Validate" textFill="WHITE">
+    <PasswordField id="passwordField" fx:id="password" promptText="Mot de passe" styleClass="input" stylesheets="@../application/application.css" />
+   <PasswordField id="passwordField" fx:id="confirmpassword" promptText="Confirme Mot de passe" styleClass="input" stylesheets="@../application/application.css" />
+     <Button onAction="#On_SignUp" style="-fx-background-color: green;" styleClass="button_log" stylesheets="@../application/application.css" text="S'inscrire" textFill="WHITE">
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></Button>

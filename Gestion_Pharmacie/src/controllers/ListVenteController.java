@@ -181,11 +181,6 @@ public class ListVenteController implements Initializable {
         }
     }
 
-
-	private void extracted() {
-	}
-
-
     //___________ Select Sales Data :
     private Map<String, Vente> fetchSalesData() {
         try {

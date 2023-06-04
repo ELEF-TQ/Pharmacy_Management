@@ -6,10 +6,11 @@ import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.util.Duration;
 
-public class MainController {
+public class MainController implements Initializable {
 
 	//___________ Interface Controllers :
     @FXML
@@ -51,9 +52,7 @@ public class MainController {
     }
     
     public void initialize(URL location , ResourceBundle resourses) {
-    	TranslateTransition T = new TranslateTransition(Duration.seconds(1), VBox);
-    	T.setToX(VBox.getLayoutX()*5.5);
-    	T.play();
+    	
 
 			try {
 				Page = FXMLLoader.load(getClass().getResource("/interfaces/SignUp.fxml"));

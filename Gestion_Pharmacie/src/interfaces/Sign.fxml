@@ -16,7 +16,7 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btn_sinscrire" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="157.0" mnemonicParsing="false" onAction="#On_SignUp" style="-fx-background-color: transparent; -fx-border-style: solid; -fx-border-radius: 12; -fx-border-color: white;" text="S'inscrire" textFill="WHITE">
+            <Button fx:id="btn_sinscrire" alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="157.0" mnemonicParsing="false" onAction="#On_SignUp" style=": ;" styleClass="trans-btn-white-border" stylesheets="@../application/application.css" text="S'inscrire" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
