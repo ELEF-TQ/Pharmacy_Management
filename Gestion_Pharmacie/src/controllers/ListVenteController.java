@@ -32,6 +32,7 @@ import models.Vente;
 
 public class ListVenteController implements Initializable {
 
+	boolean hasSales ;
 	//___________ Database Connection :
     public Connection con;
     public java.sql.Statement statement;
@@ -53,33 +54,34 @@ public class ListVenteController implements Initializable {
     Map<String, Vente> salesData = new HashMap<>();
 
     //___________ Print Total Sales
-    @FXML public void On_PrintTotalSales() {
+    @SuppressWarnings("resource")
+	public void On_PrintTotalSales() {
         try {
             PDDocument document = new PDDocument();
             PDPage page = new PDPage();
             document.addPage(page);
 
-            /*___ Create a new content stream for the PDF page __*/
+            /*___ Create a new content stream for the PDF page ___*/
             PDPageContentStream contentStream = new PDPageContentStream(document, page);
 
-            /*___ Set font and font size for the text __*/
+            /*___ Set font and font size for the text ___*/
             PDFont font = PDType1Font.HELVETICA_BOLD;
             float fontSize = 10;
             contentStream.setFont(font, fontSize);
 
-            /*___ Set the starting position for the text __*/
+            /*___ Set the starting position for the text ___*/
             float startX = 50;
             float startY = page.getMediaBox().getHeight() - 50;
 
-            /*___ Set line spacing __*/
+            /*___ Set line spacing ___*/
             float lineHeight = 15;
             contentStream.setLeading(lineHeight);
 
-            /*___ Write the information and total price to the PDF __*/
+            /*___ Write the information and total price to the PDF ___*/
             contentStream.beginText();
             contentStream.newLineAtOffset(startX, startY);
 
-            String query = "SELECT sales.Client_Name, sales.Client_CNI, sales.Total_Price ,sales_products.Product_Code, sales_products.Quantity " +
+            String query = "SELECT sales.Client_Name, sales.Client_CNI, sales.Total_Price, sales_products.Product_Code, sales_products.Quantity " +
                     "FROM sales " +
                     "INNER JOIN sales_products ON sales.id = sales_products.Sale_ID " +
                     "ORDER BY sales.Client_Name, sales.Client_CNI";
@@ -89,9 +91,11 @@ public class ListVenteController implements Initializable {
 
             String currentClientName = "";
             String currentClientCNI = "";
-            int totalPrice =0;
-            
+            int totalPrice = 0;
+            boolean hasSales = false;
+
             while (result.next()) {
+            	hasSales = true;
                 String clientName = result.getString("Client_Name");
                 String clientCNI = result.getString("Client_CNI");
                 String productCode = result.getString("Product_Code");
@@ -135,13 +139,19 @@ public class ListVenteController implements Initializable {
                 contentStream.newLine();
                 contentStream.showText("Qte: " + quantity);
                 contentStream.newLine();
-
+               
             }
 
+            /*___ Show alert if there are no sales ___*/
+            if (!hasSales) {
+                Alert alert = new Alert(AlertType.INFORMATION, "Il n'y a pas de ventes disponibles.");
+                alert.showAndWait();
+                return;
+                }
             /*___ Print the total price for the last client ___*/
             if (!currentClientName.isEmpty()) {
                 /*___ Print the total price for the last client ___*/
-            	contentStream.newLine();
+                contentStream.newLine();
                 contentStream.showText("---- Prix Total: " + totalPrice);
                 contentStream.newLine();
                 contentStream.newLine();
@@ -163,12 +173,17 @@ public class ListVenteController implements Initializable {
 
             /*___ Close the PDF document ___*/
             document.close();
+
             Alert alert = new Alert(AlertType.INFORMATION, "Vente_Total créé avec succès");
             alert.showAndWait();
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
     }
+
+
+	private void extracted() {
+	}
 
 
     //___________ Select Sales Data :
