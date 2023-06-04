@@ -115,7 +115,7 @@ public class ModProduitController implements Initializable {
 		    price = Integer.parseInt(Prix_Prd.getText());
 		    quantity = Integer.parseInt(Qte_Prd.getText());
 		} catch (NumberFormatException e) {
-		    Alert alert = new Alert(AlertType.WARNING, "Veuillez entrer une valeur numérique pour le prix.");
+		    Alert alert = new Alert(AlertType.WARNING, "Veuillez entrer une valeur numérique pour le prix et la quantité");
 		    alert.showAndWait();
 		    return;
 		}

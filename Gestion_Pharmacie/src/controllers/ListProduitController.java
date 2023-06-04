@@ -75,11 +75,11 @@ public class ListProduitController implements Initializable {
     
     //____________ DELETE Product from database and table  :
     @FXML private void On_DeleteProduct() {
- 	    	/*___ select supplier ___*/
+ 	    	/*___ select product ___*/
  	        Produit selectedProdcut = Table_Prd.getSelectionModel().getSelectedItem();
  	        if (selectedProdcut != null) {
  	            String ProductID = selectedProdcut.getCode();
- 	            /*___ delete supplier ___*/
+ 	            /*___ delete product ___*/
  	           Table_Prd.getItems().remove(selectedProdcut);
  	            String deleteSQL ="DELETE FROM products WHERE Code = '" + ProductID + "'";
  	            try {
@@ -102,10 +102,10 @@ public class ListProduitController implements Initializable {
     
   //____________ UPDATE Product informations  : 
     @FXML private void On_ModifyProduct() {
-    	/*___ select supplier ___*/
+    	/*___ select product ___*/
         Produit selectedProduct = Table_Prd.getSelectionModel().getSelectedItem();
         if (selectedProduct != null) {
-        	/*___ update supplier ___*/
+        	/*___ update product ___*/
             Produit editedProduct = showEditProductDialog(selectedProduct);
             if (editedProduct != null) {
                 String updateSQL = "UPDATE products SET Name = ?, Category = ?, Forme = ?, Price = ?, DateFab = ? , DateExp = ? WHERE Code = ?";

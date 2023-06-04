@@ -62,6 +62,7 @@ public class SignInController implements Initializable {
 				stage.centerOnScreen();
 				
 				
+				
 			} else {
 				showAlert(AlertType.ERROR, "Justificatifs d’identité non valides", "Veuillez entrer un nom d’utilisateur et un mot de passe valides.");
 			}
@@ -92,9 +93,9 @@ public class SignInController implements Initializable {
 	            ResultSet resultSet = statement.executeQuery();
 
 	            if (resultSet.next()) {
-	                showAlert(AlertType.INFORMATION, "Email Sent", "Username and password have been sent to your email address.");
+	                showAlert(AlertType.INFORMATION, "Email envoyé", "Nom d'utilisateur et mot de passe ont été envoyés à votre adresse email.");
 	            } else {
-	                showAlert(AlertType.ERROR, "Incorrect Email", "The email address you entered is not registered.");
+	                showAlert(AlertType.ERROR, "Email incorrect", "L'adresse email que vous avez saisie n'est pas enregistrée.");
 	            }
 	            resultSet.close();
 	            statement.close();

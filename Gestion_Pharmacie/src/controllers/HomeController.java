@@ -88,7 +88,7 @@ public class HomeController implements Initializable  {
         {
         	Alert alert = new Alert(AlertType.CONFIRMATION);
         	alert.setTitle("SignOut");
-        	alert.setHeaderText("you're about to logout !");
+        	alert.setHeaderText("Vous êtes sur le point de vous déconnecter!");
            if(alert.showAndWait().get()== ButtonType.OK) {
         	   stage = (Stage) Application.getScene().getWindow();
         	   stage.close();

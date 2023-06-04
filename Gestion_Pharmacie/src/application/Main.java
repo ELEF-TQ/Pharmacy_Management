@@ -15,9 +15,9 @@ public class Main extends Application {
 			Parent root= FXMLLoader.load(getClass().getResource("/interfaces/Sign.fxml"));
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			scene.setFill(Color.TRANSPARENT);
+			scene.setFill(Color.ALICEBLUE);
 			primaryStage.setScene(scene);
-			primaryStage.initStyle(StageStyle.TRANSPARENT);
+			primaryStage.initStyle(StageStyle.DECORATED);
 			primaryStage.show();
 			
 		} catch(Exception e) {
