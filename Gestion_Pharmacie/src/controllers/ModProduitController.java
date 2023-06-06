@@ -171,7 +171,7 @@ public class ModProduitController implements Initializable {
 		con = DBConnection.connect();
 		loadSuppliers();
 		CategoryBox.setItems(FXCollections.observableArrayList("Spécialité médicament","Parapharmaceutique","diététique"));
-		FormeBox.setItems(FXCollections.observableArrayList("Injéctable","Dérmique","Inhalée","Réctale"));
+		FormeBox.setItems(FXCollections.observableArrayList("orale","injectable","dermique","inhalée","rectale"));
 	} 
 	
 	

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>E:\E-LEARNING\projects\Java JavaFX\Gestion_Pharmacie\exe\app.jar</jar>
+  <outfile>E:\E-LEARNING\projects\Java JavaFX\Gestion_Pharmacie\exe\sante.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>E:\E-LEARNING\projects\Java JavaFX\Gestion_Pharmacie\exe\icon.ico</icon>
+  <jre>
+    <path>E:\systeme\Java\jdk-17.0.6</path>
+    <requiresJdk>false</requiresJdk>
+    <requires64Bit>false</requires64Bit>
+    <minVersion></minVersion>
+    <maxVersion></maxVersion>
+    <opt>--module-path &quot;E:\systeme\Java\javafx-sdk-20\lib&quot; --add-modules javafx.controls,javafx.fxml</opt>
+  </jre>
+</launch4jConfig>

@@ -144,7 +144,7 @@ public class ListVenteController implements Initializable {
 
             /*___ Show alert if there are no sales ___*/
             if (!hasSales) {
-                Alert alert = new Alert(AlertType.INFORMATION, "Il n'y a pas de ventes disponibles.");
+                Alert alert = new Alert(AlertType.INFORMATION, "Il n'y a pas des ventes disponibles.");
                 alert.showAndWait();
                 return;
                 }
@@ -224,7 +224,7 @@ public class ListVenteController implements Initializable {
         Alert confirmationDialog = new Alert(AlertType.CONFIRMATION);
         confirmationDialog.setTitle("Confirmation");
         confirmationDialog.setHeaderText("Supprimer tous les Vente");
-        confirmationDialog.setContentText("Voulez-vous vraiment supprimer tous l'historique des Ventes ?");
+        confirmationDialog.setContentText("Voulez-vous vraiment supprimer tout l'historique des Ventes ?");
 
         Optional<ButtonType> result = confirmationDialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {

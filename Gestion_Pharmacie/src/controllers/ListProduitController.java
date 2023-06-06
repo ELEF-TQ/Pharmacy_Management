@@ -85,15 +85,14 @@ public class ListProduitController implements Initializable {
  	            try {
  	                statement = (Statement) con.prepareStatement(deleteSQL);
  	                statement.execute(deleteSQL);
- 	                Alert alert = new Alert(AlertType.INFORMATION, "Produit " + ProductID + " supprimer avec succes");
+ 	                Alert alert = new Alert(AlertType.INFORMATION, "Produit " + ProductID + " a été supprimé avec succès.");
  	                alert.showAndWait();
  	            } catch (SQLException e) {
- 	                e.printStackTrace();
- 	                Alert alert = new Alert(AlertType.WARNING, "Produit Non Supprimer");
+ 	                Alert alert = new Alert(AlertType.WARNING, "Produit non supprimé");
  	                alert.showAndWait();
  	            }
  	        } else {
- 	            Alert alert = new Alert(AlertType.ERROR, "Aucun Produit sélectionné");
+ 	            Alert alert = new Alert(AlertType.ERROR, "Aucun produit sélectionné");
  	            alert.showAndWait();
  	        }
  	}
@@ -134,12 +133,12 @@ public class ListProduitController implements Initializable {
                     showProducts();
                 } catch (SQLException e) {
                     e.printStackTrace();
-                    Alert alert = new Alert(AlertType.WARNING, "Échec de la modification du Produit");
+                    Alert alert = new Alert(AlertType.WARNING, "Échec de la modification du produit");
                     alert.showAndWait();
                 }
             }
         } else {
-        	Alert alert = new Alert(AlertType.ERROR, "Aucun Produit sélectionné");
+        	Alert alert = new Alert(AlertType.ERROR, "Aucun produit sélectionné");
             alert.showAndWait();
         }
     }
@@ -149,7 +148,7 @@ public class ListProduitController implements Initializable {
     	
     	/*___ create stage ___*/
         Stage dialogStage = new Stage();
-        dialogStage.setTitle("Modifier les informations du Produit");
+        dialogStage.setTitle("Modifier les informations du produit");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(10);

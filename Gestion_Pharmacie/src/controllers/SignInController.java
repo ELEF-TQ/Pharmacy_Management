@@ -61,7 +61,7 @@ public class SignInController implements Initializable {
 				stage.setScene(new Scene(root));
 				stage.centerOnScreen();	
 			} else {
-				showAlert(AlertType.ERROR, "Justificatifs d’identité non valides", "Veuillez entrer un nom d’utilisateur et un mot de passe valides.");
+				showAlert(AlertType.ERROR, "informations non valides", "Veuillez entrer un nom d’utilisateur et un mot de passe valides.");
 			}
 
 			resault.close();
@@ -69,7 +69,7 @@ public class SignInController implements Initializable {
 		} catch (SQLException e) {
 			 Alert alert = new Alert(AlertType.ERROR);
              alert.setTitle("Error");
-             alert.setHeaderText("erreur de connextion");
+             alert.setHeaderText("erreur de connexion");
              alert.setContentText("Échec de la connexion à la base de données. Veuillez vérifier vos paramètres de connexion.");
              alert.showAndWait();
 		}
@@ -79,7 +79,7 @@ public class SignInController implements Initializable {
 	@FXML void On_forgotPass() {
 	    TextInputDialog dialog = new TextInputDialog();
 	    dialog.setTitle("Mot de passe oubliée");
-	    dialog.setHeaderText("Enter your email address");
+	    dialog.setHeaderText("Enter votre adresse email ");
 	    dialog.setContentText("Email:");
 
 	    Optional<String> result = dialog.showAndWait();
@@ -102,8 +102,8 @@ public class SignInController implements Initializable {
 	            statement.close();
 	        } catch (SQLException e) {
 	        	 Alert alert = new Alert(AlertType.ERROR);
-	                alert.setTitle("Error");
-	                alert.setHeaderText("erreur de connextion");
+	                alert.setTitle("Erreur");
+	                alert.setHeaderText("erreur de connexion");
 	                alert.setContentText("Échec de la connexion à la base de données. Veuillez vérifier vos paramètres de connexion.");
 	                alert.showAndWait();
 	        }

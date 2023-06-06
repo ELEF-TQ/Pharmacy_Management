@@ -285,7 +285,7 @@ public class ModVenteController implements Initializable {
                 } else {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
-                    alert.setHeaderText("Vente non créée");
+                    alert.setHeaderText("Vente non crée");
                     alert.setContentText("Erreur lors de la création de la vente. Veuillez réessayer.");
                     alert.showAndWait();
                 }
@@ -349,9 +349,9 @@ public class ModVenteController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Database error");
-            alert.setContentText("An error occurred while inserting the sale into the database. Please try again.");
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur de base de données");
+            alert.setContentText("Une erreur s'est produite lors de l'insertion de la vente dans la base de données. Veuillez réessayer.");
             alert.showAndWait();
         }
     }

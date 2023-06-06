@@ -23,8 +23,8 @@ public class DBConnection {
         } catch (Exception e) {
             Platform.runLater(() -> {
                 Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("erreur de connextion");
+                alert.setTitle("Erreur");
+                alert.setHeaderText("Erreur de connexion");
                 alert.setContentText("Échec de la connexion à la base de données. Veuillez vérifier vos paramètres de connexion.");
                 alert.showAndWait();
             });
