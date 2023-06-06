@@ -68,7 +68,11 @@ public class SignupController {
 
     	        statement.close();
     	    } catch (SQLException e) {
-    	        e.printStackTrace();
+    	    	 Alert alert = new Alert(AlertType.ERROR);
+                 alert.setTitle("Error");
+                 alert.setHeaderText("erreur de connextion");
+                 alert.setContentText("Échec de la connexion à la base de données. Veuillez vérifier vos paramètres de connexion.");
+                 alert.showAndWait();
     	    }
     }
     

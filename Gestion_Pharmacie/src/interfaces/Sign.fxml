@@ -11,7 +11,7 @@
    <children>
       <AnchorPane layoutX="22.0" layoutY="42.0" prefHeight="302.0" prefWidth="627.0" styleClass="pane" stylesheets="@../application/application.css">
          <children>
-            <Label contentDisplay="CENTER" layoutX="47.0" layoutY="63.0" prefHeight="88.0" prefWidth="227.0" style="-fx-alignment: center;" text="Vous n'étes pas inscrit ?" textFill="WHITE">
+            <Label contentDisplay="CENTER" layoutX="47.0" layoutY="63.0" prefHeight="88.0" prefWidth="227.0" style="-fx-alignment: center;" text="vous n'êtes pas inscrit ?" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
@@ -24,7 +24,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label contentDisplay="CENTER" layoutX="364.0" layoutY="63.0" prefHeight="88.0" prefWidth="227.0" style="-fx-alignment: center;" text="Vous étes deja inscrit ?" textFill="WHITE">
+            <Label contentDisplay="CENTER" layoutX="364.0" layoutY="63.0" prefHeight="88.0" prefWidth="227.0" style="-fx-alignment: center;" text="vous êtes déjà inscrit ?" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>

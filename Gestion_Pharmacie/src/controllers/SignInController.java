@@ -67,7 +67,11 @@ public class SignInController implements Initializable {
 			resault.close();
 			statement.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			 Alert alert = new Alert(AlertType.ERROR);
+             alert.setTitle("Error");
+             alert.setHeaderText("erreur de connextion");
+             alert.setContentText("Échec de la connexion à la base de données. Veuillez vérifier vos paramètres de connexion.");
+             alert.showAndWait();
 		}
 	}
 
@@ -97,7 +101,11 @@ public class SignInController implements Initializable {
 	            resultSet.close();
 	            statement.close();
 	        } catch (SQLException e) {
-	            e.printStackTrace();
+	        	 Alert alert = new Alert(AlertType.ERROR);
+	                alert.setTitle("Error");
+	                alert.setHeaderText("erreur de connextion");
+	                alert.setContentText("Échec de la connexion à la base de données. Veuillez vérifier vos paramètres de connexion.");
+	                alert.showAndWait();
 	        }
 	    }
 	}
@@ -111,7 +119,6 @@ public class SignInController implements Initializable {
 		alert.showAndWait();
 	}
 	
-	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		con = DBConnection.connect();
@@ -121,45 +128,3 @@ public class SignInController implements Initializable {
 
 
 
-
-
-/*
-// Method to send an email
-private void sendEmail(String emailAddress, String username, String password) {
-    // Sender's email address and password
-    String senderEmail = "your_email@example.com";
-    String senderPassword = "your_email_password";
-    // SMTP server properties
-    Properties properties = new Properties();
-    properties.put("mail.smtp.auth", "true");
-    properties.put("mail.smtp.starttls.enable", "true");
-    properties.put("mail.smtp.host", "smtp.example.com");
-    properties.put("mail.smtp.port", "587");
-
-    // Create a session with authentication
-    Session session = Session.getInstance(properties, new Authenticator() {
-        @Override
-        protected PasswordAuthentication getPasswordAuthentication() {
-            return new PasswordAuthentication(senderEmail, senderPassword);
-        }
-    });
-
-    try {
-        // Create a new email message
-        Message message = new MimeMessage(session);
-        message.setFrom(new InternetAddress(senderEmail));
-        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAddress));
-        message.setSubject("Forgot Password");
-        message.setText("Dear user,\n\nYour username: " + username + "\nYour password: " + password);
-
-        // Send the email
-        Transport.send(message);
-
-        System.out.println("Email sent successfully");
-    } catch (MessagingException e) {
-        e.printStackTrace();
-        // TODO: Handle email sending failure
-    }
-}
-
-*/

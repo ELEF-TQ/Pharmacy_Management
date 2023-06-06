@@ -48,7 +48,7 @@ public class HomeController implements Initializable  {
     public void handleClicks(ActionEvent actionEvent) {
     	 if (actionEvent.getSource() == btnOverview) {
          	try {
- 				Page = FXMLLoader.load(getClass().getResource("/interfaces/Acceuill.fxml"));
+ 				Page = FXMLLoader.load(getClass().getResource("/interfaces/Accueil.fxml"));
  				HomeContent.getChildren().removeAll();
  				HomeContent.getChildren().setAll(Page);
      		} catch (IOException e1) {
@@ -87,7 +87,7 @@ public class HomeController implements Initializable  {
         if(actionEvent.getSource()==btnSignout)
         {
         	Alert alert = new Alert(AlertType.CONFIRMATION);
-        	alert.setTitle("SignOut");
+        	alert.setTitle("Se déconnecter");
         	alert.setHeaderText("Vous êtes sur le point de vous déconnecter!");
            if(alert.showAndWait().get()== ButtonType.OK) {
         	   stage = (Stage) Application.getScene().getWindow();
@@ -102,7 +102,7 @@ public class HomeController implements Initializable  {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-				Page = FXMLLoader.load(getClass().getResource("/interfaces/Acceuill.fxml"));
+				Page = FXMLLoader.load(getClass().getResource("/interfaces/Accueil.fxml"));
 				HomeContent.getChildren().removeAll();
 				HomeContent.getChildren().setAll(Page);
  		} catch (IOException e1) {

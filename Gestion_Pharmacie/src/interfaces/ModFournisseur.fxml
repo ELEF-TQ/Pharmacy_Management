@@ -92,12 +92,12 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="54.0" layoutY="88.0" prefHeight="74.0" prefWidth="589.0">
                <children>
-                  <ComboBox fx:id="PaymentBox_Frn" prefHeight="43.0" prefWidth="180.0" promptText="Payement" styleClass="input" stylesheets="@../application/application.css">
+                  <ComboBox fx:id="PaymentBox_Frn" maxWidth="216.0" prefHeight="43.0" prefWidth="216.0" styleClass="input" stylesheets="@../application/application.css">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <TextField fx:id="Rib_Frn" prefHeight="44.0" prefWidth="180.0" promptText="RIB Compte Bancaire" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Rib_Frn" prefHeight="44.0" prefWidth="180.0" promptText="RIB compte bancaire" styleClass="input" stylesheets="@../application/application.css">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -113,7 +113,7 @@
                   <TableColumn fx:id="Nom_FRN" prefWidth="133.0" text="Nom" />
                   <TableColumn fx:id="Tel_FRN" minWidth="0.0" prefWidth="160.0" text="Tel" />
                   <TableColumn fx:id="Email_FRN" minWidth="0.0" prefWidth="170.0" text="Email" />
-                  <TableColumn fx:id="Payment_FRN" prefWidth="183.0" text="Payment" />
+                  <TableColumn fx:id="Payment_FRN" prefWidth="183.0" text="Paiement" />
                </columns>
             </TableView>
          </children>

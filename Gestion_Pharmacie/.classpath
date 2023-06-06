@@ -11,11 +11,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/E-LEARNING/projects/Java JavaFX/Gestion_Pharmacie/Gestion_Pharmacie/lib/commons-logging-1.2.jar">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="E:/E-LEARNING/projects/Java JavaFX/Gestion_Pharmacie/Gestion_Pharmacie/lib/fontawesomefx-8.2.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -37,6 +32,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="E:/E-LEARNING/projects/Java JavaFX/Gestion_Pharmacie/Gestion_Pharmacie/lib/pdfbox-2.0.28.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="E:/E-LEARNING/projects/Java JavaFX/Gestion_Pharmacie/Gestion_Pharmacie/lib/commons-logging-1.2.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

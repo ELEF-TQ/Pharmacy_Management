@@ -13,7 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-public class AceuillController implements Initializable {
+public class AccueilController implements Initializable {
 	
 	//___________ Database Connection :
 	public Connection con ;

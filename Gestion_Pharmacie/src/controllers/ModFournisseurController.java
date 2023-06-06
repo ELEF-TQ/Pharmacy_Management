@@ -84,7 +84,7 @@ public class ModFournisseurController implements Initializable{
 	    	Email_Frn.setText("");
 	    	Tel_Frn.setText("");
 	    	Rib_Frn.setText("");
-	    	PaymentBox_Frn.setValue("Payment Par Bank");
+	    	PaymentBox_Frn.setValue("Paiement par banque");
 	    }
 	    
 	   //____________ INSERT Supplier To Database : 
@@ -103,14 +103,14 @@ public class ModFournisseurController implements Initializable{
 			        alert.showAndWait();
 			        return;
 			    }
-			    if (payment.equals("Payment Par Bank")) {
+			    if (payment.equals("Paiement par banque")) {
 			        if (rib.isEmpty()) {
 			            Alert alert = new Alert(AlertType.ERROR, "Le champ RIB doit être rempli");
 			            alert.showAndWait();
 			            return;
 			        }
-			    } else if (payment.equals("Payment Par Cash")) {
-			        rib = "Payment Par Cash";
+			    } else if (payment.equals("Paiement par cash")) {
+			        rib = "Paiement par cash";
 			    }
                 
 			    /*___ insert values to database  ___*/
@@ -241,7 +241,7 @@ public class ModFournisseurController implements Initializable{
 	        TextField phoneField = new TextField(supplier.getPhone());
 	        TextField emailField = new TextField(supplier.getEmail());
 	        ComboBox<String> paymentBox = new ComboBox<>();
-	        paymentBox.getItems().addAll("Payment Par Bank", "Payment Par Cash");
+	        paymentBox.getItems().addAll("Paiement par banque", "Paiement par cash");
 	        paymentBox.setValue(supplier.getPayment());
 	        TextField ribField = new TextField(supplier.getRIB());
 	        
@@ -258,14 +258,14 @@ public class ModFournisseurController implements Initializable{
 	        gridPane.add(ribField, 1, 4);
 	        
 	     	/*___control payment ___*/
-	        if (supplier.getPayment().equals("Payment Par Cash")) {
-	            ribField.setText("Payment Par Cash");
+	        if (supplier.getPayment().equals("Paiement par cash")) {
+	            ribField.setText("Paiement par cash");
 	        }
 	        paymentBox.setOnAction(e -> {
 	            String selectedPayment = paymentBox.getValue();
-	            ribField.setDisable(selectedPayment.equals("Payment Par Cash"));
-	            if (selectedPayment.equals("Payment Par Cash")) {
-	                ribField.setText("Payment Par Cash");
+	            ribField.setDisable(selectedPayment.equals("Paiement par cash"));
+	            if (selectedPayment.equals("Paiement par cash")) {
+	                ribField.setText("Paiement par cash");
 	            } else {
 	                ribField.setText("");
 	            }
@@ -336,14 +336,14 @@ public class ModFournisseurController implements Initializable{
 		
 		/*____ payment box control ___*/
 		PaymentBox_Frn.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
-		    if (newValue != null && newValue.equals("Payment Par Bank")) {
+		    if (newValue != null && newValue.equals("Paiement par banque")) {
 		        Rib_Frn.setDisable(false); 
 		    } else {
 		        Rib_Frn.setDisable(true); 
 		    }
 		});
-		PaymentBox_Frn.setItems(FXCollections.observableArrayList("Payment Par Bank", "Payment Par Cash"));
-		PaymentBox_Frn.setValue("Payment Par Bank");
+		PaymentBox_Frn.setItems(FXCollections.observableArrayList("Paiement par banque", "Paiement par cash"));
+		PaymentBox_Frn.setValue("Paiement par banque");
 		Rib_Frn.setDisable(false);
 	
 	}

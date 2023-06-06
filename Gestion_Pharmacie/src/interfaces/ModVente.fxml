@@ -24,26 +24,32 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="ClientCNI" promptText="CNI Client" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="ClientCNI" promptText="CNI de client" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
                   <HBox alignment="CENTER" prefHeight="70.0" prefWidth="319.0">
                      <children>
-                        <TextField fx:id="searchField" promptText="Cherche" />
+                        <TextField fx:id="searchField" promptText="Chercher" />
                      </children></HBox>
                   <ListView fx:id="productList" prefHeight="181.0" prefWidth="264.0">
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin></ListView>
-                  <Button mnemonicParsing="false" onAction="#onAddProduct" text="ADD" />
+                  <Button mnemonicParsing="false" onAction="#onAddProduct" text="Ajouter">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <VBox alignment="CENTER" layoutX="365.0" prefHeight="477.0" prefWidth="319.0">
                <children>
                   <ListView fx:id="selectedProductList" prefHeight="182.0" prefWidth="319.0" />
-                  <Button mnemonicParsing="false" onAction="#onRemoveProduct" text="REMOVE" />
+                  <Button mnemonicParsing="false" onAction="#onRemoveProduct" text="Supprimer">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></Button>
                </children>
             </VBox>
             <HBox alignment="CENTER" layoutX="3.0" layoutY="500.0" prefHeight="40.0" prefWidth="726.0">
@@ -71,7 +77,7 @@
                         <Insets right="40.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="showVente" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_ShowVente" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="List des Ventes" textAlignment="CENTER">
+                  <Button fx:id="showVente" alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_ShowVente" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="Liste des ventes" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>

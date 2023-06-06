@@ -33,7 +33,7 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <TextField fx:id="Qte_Prd" maxWidth="293.0" prefHeight="40.0" prefWidth="293.0" promptText="Qantité" styleClass="input" stylesheets="@../application/application.css">
+                  <TextField fx:id="Qte_Prd" maxWidth="293.0" prefHeight="40.0" prefWidth="293.0" promptText="Quantité" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin></TextField>
@@ -41,7 +41,7 @@
             </VBox>
             <VBox alignment="CENTER" layoutX="343.0" layoutY="14.0" prefHeight="477.0" prefWidth="319.0">
                <children>
-                  <ComboBox fx:id="CategoryBox" prefWidth="150.0" promptText="Catégories" styleClass="input" stylesheets="@../application/application.css">
+                  <ComboBox fx:id="CategoryBox" prefWidth="150.0" promptText="Catégorie" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
@@ -55,12 +55,12 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </ComboBox>
-                  <DatePicker fx:id="DateFab_Prd" promptText="Dtae Fabrication" styleClass="input" stylesheets="@../application/application.css">
+                  <DatePicker fx:id="DateFab_Prd" promptText="Date fabrication" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
                   </DatePicker>
-                  <DatePicker fx:id="DateExp_Prd" promptText="Date Expédition" styleClass="input" stylesheets="@../application/application.css">
+                  <DatePicker fx:id="DateExp_Prd" promptText="Date expédition" styleClass="input" stylesheets="@../application/application.css">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </VBox.margin>
@@ -80,7 +80,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_ShowProduct" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="List des Produits" textAlignment="CENTER">
+                  <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" onAction="#On_ShowProduct" prefHeight="42.0" prefWidth="174.0" style="-fx-background-color: blue;" stylesheets="@../application/application.css" text="Liste des produits" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold Italic" size="18.0" />
                      </font>

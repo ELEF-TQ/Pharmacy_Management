@@ -16,7 +16,7 @@
     <TextField id="usernameField" fx:id="username" promptText="Nom d'utilisateur" styleClass="input" stylesheets="@../application/application.css" />
    <TextField id="usernameField" fx:id="email" promptText="Email" styleClass="input" stylesheets="@../application/application.css" />
     <PasswordField id="passwordField" fx:id="password" promptText="Mot de passe" styleClass="input" stylesheets="@../application/application.css" />
-   <PasswordField id="passwordField" fx:id="confirmpassword" promptText="Confirme Mot de passe" styleClass="input" stylesheets="@../application/application.css" />
+   <PasswordField id="passwordField" fx:id="confirmpassword" promptText="Confirme mot de passe" styleClass="input" stylesheets="@../application/application.css" />
      <Button onAction="#On_SignUp" style="-fx-background-color: green;" styleClass="button_log" stylesheets="@../application/application.css" text="S'inscrire" textFill="WHITE">
       <cursor>
          <Cursor fx:constant="HAND" />
